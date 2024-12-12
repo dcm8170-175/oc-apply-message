@@ -1,0 +1,47 @@
+
+sample-blogで作成したマニフェストファイル(sample-blog_manifest.yaml)を
+新規作成したsample-blog-testに読み込み
+
+[ec2-user@ip-172-31-43-114 sample-blog]$ oc project sample-blog-test
+Now using project "sample-blog-test" on server "https://api.dcm-ocp-pocpack.sep0.p1.openshiftapps.com:6443".
+[ec2-user@ip-172-31-43-114 sample-blog]$
+[ec2-user@ip-172-31-43-114 sample-blog]$ ls -l
+total 444
+drwxr-xr-x. 4 ec2-user ec2-user     33 Dec 10 00:25 docker
+drwxr-xr-x. 2 ec2-user ec2-user    176 Dec 10 00:25 images
+drwxr-xr-x. 3 ec2-user ec2-user     18 Dec 10 00:25 k8s
+-rw-r--r--. 1 ec2-user ec2-user 104987 Dec 12 00:56 pod_manifest.yaml
+-rw-r--r--. 1 ec2-user ec2-user   2994 Dec 10 00:25 README.md
+-rw-r--r--. 1 ec2-user ec2-user 174540 Dec 12 06:08 sample-blog_manifest.yaml
+-rw-r--r--. 1 ec2-user ec2-user 166349 Dec 12 02:50 sample-blog_manifest.yaml_bk
+[ec2-user@ip-172-31-43-114 sample-blog]$
+[ec2-user@ip-172-31-43-114 sample-blog]$ oc apply -f sample-blog_manifest.yaml
+pod/django-1-build configured
+pod/django-5c4c6b8b-fkdmh configured
+pod/mysql-0 configured
+pod/nginx-1-build configured
+pod/nginx-8675f47f6b-q2s9z configured
+pod/redis-0 configured
+service/django configured
+service/mysql configured
+service/nginx configured
+service/redis configured
+deployment.apps/django configured
+deployment.apps/nginx configured
+replicaset.apps/django-5c4c6b8b configured
+replicaset.apps/nginx-8675f47f6b configured
+statefulset.apps/mysql configured
+statefulset.apps/redis configured
+buildconfig.build.openshift.io/django configured
+buildconfig.build.openshift.io/nginx configured
+build.build.openshift.io/django-1 configured
+build.build.openshift.io/nginx-1 configured
+imagestream.image.openshift.io/django configured
+imagestream.image.openshift.io/nginx configured
+route.route.openshift.io/nginx configured
+[ec2-user@ip-172-31-43-114 sample-blog]$
+[ec2-user@ip-172-31-43-114 sample-blog]$ oc get all
+Warning: apps.openshift.io/v1 DeploymentConfig is deprecated in v4.14+, unavailable in v4.10000+
+Warning: kubevirt.io/v1 VirtualMachineInstancePresets is now deprecated and will be removed in v2.
+No resources found
+[ec2-user@ip-172-31-43-114 sample-blog]$

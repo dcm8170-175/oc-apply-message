@@ -1,0 +1,158 @@
+
+sample-blogで作成したマニフェストファイル(sample-blog_manifest.yaml)を
+sample-blogに再度読み込み
+
+[ec2-user@ip-172-31-43-114 sample-blog]$ oc project sample-blog
+Now using project "sample-blog" on server "https://api.dcm-ocp-pocpack.sep0.p1.openshiftapps.com:6443".
+[ec2-user@ip-172-31-43-114 sample-blog]$
+[ec2-user@ip-172-31-43-114 sample-blog]$
+[ec2-user@ip-172-31-43-114 sample-blog]$ ls -l
+total 444
+drwxr-xr-x. 4 ec2-user ec2-user     33 Dec 10 00:25 docker
+drwxr-xr-x. 2 ec2-user ec2-user    176 Dec 10 00:25 images
+drwxr-xr-x. 3 ec2-user ec2-user     18 Dec 10 00:25 k8s
+-rw-r--r--. 1 ec2-user ec2-user 104987 Dec 12 00:56 pod_manifest.yaml
+-rw-r--r--. 1 ec2-user ec2-user   2994 Dec 10 00:25 README.md
+-rw-r--r--. 1 ec2-user ec2-user 174540 Dec 12 06:08 sample-blog_manifest.yaml
+-rw-r--r--. 1 ec2-user ec2-user 166349 Dec 12 02:50 sample-blog_manifest.yaml_bk
+[ec2-user@ip-172-31-43-114 sample-blog]$
+[ec2-user@ip-172-31-43-114 sample-blog]$ oc apply -f sample-blog_manifest.yaml
+Error from server (Conflict): error when applying patch:
+{"metadata":{"resourceVersion":"3821547"}}
+to:
+Resource: "/v1, Resource=pods", GroupVersionKind: "/v1, Kind=Pod"
+Name: "django-1-build", Namespace: "sample-blog"
+for: "sample-blog_manifest.yaml": error when patching "sample-blog_manifest.yaml": Operation cannot be fulfilled on pods "django-1-build": the object has been modified; please apply your changes to the latest version and try again
+Error from server (Conflict): error when applying patch:
+{"metadata":{"resourceVersion":"3821552"}}
+to:
+Resource: "/v1, Resource=pods", GroupVersionKind: "/v1, Kind=Pod"
+Name: "django-5c4c6b8b-fkdmh", Namespace: "sample-blog"
+for: "sample-blog_manifest.yaml": error when patching "sample-blog_manifest.yaml": Operation cannot be fulfilled on pods "django-5c4c6b8b-fkdmh": the object has been modified; please apply your changes to the latest version and try again
+Error from server (Conflict): error when applying patch:
+{"metadata":{"resourceVersion":"3821556"}}
+to:
+Resource: "/v1, Resource=pods", GroupVersionKind: "/v1, Kind=Pod"
+Name: "mysql-0", Namespace: "sample-blog"
+for: "sample-blog_manifest.yaml": error when patching "sample-blog_manifest.yaml": Operation cannot be fulfilled on pods "mysql-0": the object has been modified; please apply your changes to the latest version and try again
+Error from server (Conflict): error when applying patch:
+{"metadata":{"resourceVersion":"3821562"}}
+to:
+Resource: "/v1, Resource=pods", GroupVersionKind: "/v1, Kind=Pod"
+Name: "nginx-1-build", Namespace: "sample-blog"
+for: "sample-blog_manifest.yaml": error when patching "sample-blog_manifest.yaml": Operation cannot be fulfilled on pods "nginx-1-build": the object has been modified; please apply your changes to the latest version and try again
+Error from server (Conflict): error when applying patch:
+{"metadata":{"resourceVersion":"3821567"}}
+to:
+Resource: "/v1, Resource=pods", GroupVersionKind: "/v1, Kind=Pod"
+Name: "nginx-8675f47f6b-q2s9z", Namespace: "sample-blog"
+for: "sample-blog_manifest.yaml": error when patching "sample-blog_manifest.yaml": Operation cannot be fulfilled on pods "nginx-8675f47f6b-q2s9z": the object has been modified; please apply your changes to the latest version and try again
+Error from server (Conflict): error when applying patch:
+{"metadata":{"resourceVersion":"3821570"}}
+to:
+Resource: "/v1, Resource=pods", GroupVersionKind: "/v1, Kind=Pod"
+Name: "redis-0", Namespace: "sample-blog"
+for: "sample-blog_manifest.yaml": error when patching "sample-blog_manifest.yaml": Operation cannot be fulfilled on pods "redis-0": the object has been modified; please apply your changes to the latest version and try again
+Error from server (Conflict): error when applying patch:
+{"metadata":{"resourceVersion":"3821572"}}
+to:
+Resource: "/v1, Resource=services", GroupVersionKind: "/v1, Kind=Service"
+Name: "django", Namespace: "sample-blog"
+for: "sample-blog_manifest.yaml": error when patching "sample-blog_manifest.yaml": Operation cannot be fulfilled on services "django": the object has been modified; please apply your changes to the latest version and try again
+Error from server (Conflict): error when applying patch:
+{"metadata":{"resourceVersion":"3821575"}}
+to:
+Resource: "/v1, Resource=services", GroupVersionKind: "/v1, Kind=Service"
+Name: "mysql", Namespace: "sample-blog"
+for: "sample-blog_manifest.yaml": error when patching "sample-blog_manifest.yaml": Operation cannot be fulfilled on services "mysql": the object has been modified; please apply your changes to the latest version and try again
+Error from server (Conflict): error when applying patch:
+{"metadata":{"resourceVersion":"3821577"}}
+to:
+Resource: "/v1, Resource=services", GroupVersionKind: "/v1, Kind=Service"
+Name: "nginx", Namespace: "sample-blog"
+for: "sample-blog_manifest.yaml": error when patching "sample-blog_manifest.yaml": Operation cannot be fulfilled on services "nginx": the object has been modified; please apply your changes to the latest version and try again
+Error from server (Conflict): error when applying patch:
+{"metadata":{"resourceVersion":"3821580"}}
+to:
+Resource: "/v1, Resource=services", GroupVersionKind: "/v1, Kind=Service"
+Name: "redis", Namespace: "sample-blog"
+for: "sample-blog_manifest.yaml": error when patching "sample-blog_manifest.yaml": Operation cannot be fulfilled on services "redis": the object has been modified; please apply your changes to the latest version and try again
+Error from server (Conflict): error when applying patch:
+{"metadata":{"generation":2,"resourceVersion":"3821592"},"status":{"observedGeneration":2}}
+to:
+Resource: "apps/v1, Resource=deployments", GroupVersionKind: "apps/v1, Kind=Deployment"
+Name: "django", Namespace: "sample-blog"
+for: "sample-blog_manifest.yaml": error when patching "sample-blog_manifest.yaml": Operation cannot be fulfilled on deployments.apps "django": the object has been modified; please apply your changes to the latest version and try again
+Error from server (Conflict): error when applying patch:
+{"metadata":{"generation":2,"resourceVersion":"3821594"},"status":{"observedGeneration":2}}
+to:
+Resource: "apps/v1, Resource=deployments", GroupVersionKind: "apps/v1, Kind=Deployment"
+Name: "nginx", Namespace: "sample-blog"
+for: "sample-blog_manifest.yaml": error when patching "sample-blog_manifest.yaml": Operation cannot be fulfilled on deployments.apps "nginx": the object has been modified; please apply your changes to the latest version and try again
+Error from server (Conflict): error when applying patch:
+{"metadata":{"resourceVersion":"3821596"}}
+to:
+Resource: "apps/v1, Resource=replicasets", GroupVersionKind: "apps/v1, Kind=ReplicaSet"
+Name: "django-5c4c6b8b", Namespace: "sample-blog"
+for: "sample-blog_manifest.yaml": error when patching "sample-blog_manifest.yaml": Operation cannot be fulfilled on replicasets.apps "django-5c4c6b8b": the object has been modified; please apply your changes to the latest version and try again
+Error from server (Conflict): error when applying patch:
+{"metadata":{"resourceVersion":"3821597"}}
+to:
+Resource: "apps/v1, Resource=replicasets", GroupVersionKind: "apps/v1, Kind=ReplicaSet"
+Name: "nginx-8675f47f6b", Namespace: "sample-blog"
+for: "sample-blog_manifest.yaml": error when patching "sample-blog_manifest.yaml": Operation cannot be fulfilled on replicasets.apps "nginx-8675f47f6b": the object has been modified; please apply your changes to the latest version and try again
+Error from server (Conflict): error when applying patch:
+{"metadata":{"resourceVersion":"3821600"}}
+to:
+Resource: "apps/v1, Resource=statefulsets", GroupVersionKind: "apps/v1, Kind=StatefulSet"
+Name: "mysql", Namespace: "sample-blog"
+for: "sample-blog_manifest.yaml": error when patching "sample-blog_manifest.yaml": Operation cannot be fulfilled on statefulsets.apps "mysql": the object has been modified; please apply your changes to the latest version and try again
+Error from server (Conflict): error when applying patch:
+{"metadata":{"resourceVersion":"3821601"}}
+to:
+Resource: "apps/v1, Resource=statefulsets", GroupVersionKind: "apps/v1, Kind=StatefulSet"
+Name: "redis", Namespace: "sample-blog"
+for: "sample-blog_manifest.yaml": error when patching "sample-blog_manifest.yaml": Operation cannot be fulfilled on statefulsets.apps "redis": the object has been modified; please apply your changes to the latest version and try again
+Error from server (Conflict): error when applying patch:
+{"metadata":{"resourceVersion":"3821602"}}
+to:
+Resource: "build.openshift.io/v1, Resource=buildconfigs", GroupVersionKind: "build.openshift.io/v1, Kind=BuildConfig"
+Name: "django", Namespace: "sample-blog"
+for: "sample-blog_manifest.yaml": error when patching "sample-blog_manifest.yaml": Operation cannot be fulfilled on buildconfigs.build.openshift.io "django": the object has been modified; please apply your changes to the latest version and try again
+Error from server (Conflict): error when applying patch:
+{"metadata":{"resourceVersion":"3821604"}}
+to:
+Resource: "build.openshift.io/v1, Resource=buildconfigs", GroupVersionKind: "build.openshift.io/v1, Kind=BuildConfig"
+Name: "nginx", Namespace: "sample-blog"
+for: "sample-blog_manifest.yaml": error when patching "sample-blog_manifest.yaml": Operation cannot be fulfilled on buildconfigs.build.openshift.io "nginx": the object has been modified; please apply your changes to the latest version and try again
+Error from server (Conflict): error when applying patch:
+{"metadata":{"resourceVersion":"3821606"}}
+to:
+Resource: "build.openshift.io/v1, Resource=builds", GroupVersionKind: "build.openshift.io/v1, Kind=Build"
+Name: "django-1", Namespace: "sample-blog"
+for: "sample-blog_manifest.yaml": error when patching "sample-blog_manifest.yaml": Operation cannot be fulfilled on builds.build.openshift.io "django-1": the object has been modified; please apply your changes to the latest version and try again
+Error from server (Conflict): error when applying patch:
+{"metadata":{"resourceVersion":"3821607"}}
+to:
+Resource: "build.openshift.io/v1, Resource=builds", GroupVersionKind: "build.openshift.io/v1, Kind=Build"
+Name: "nginx-1", Namespace: "sample-blog"
+for: "sample-blog_manifest.yaml": error when patching "sample-blog_manifest.yaml": Operation cannot be fulfilled on builds.build.openshift.io "nginx-1": the object has been modified; please apply your changes to the latest version and try again
+Error from server (Conflict): error when applying patch:
+{"metadata":{"resourceVersion":"3821608"}}
+to:
+Resource: "image.openshift.io/v1, Resource=imagestreams", GroupVersionKind: "image.openshift.io/v1, Kind=ImageStream"
+Name: "django", Namespace: "sample-blog"
+for: "sample-blog_manifest.yaml": error when patching "sample-blog_manifest.yaml": Operation cannot be fulfilled on imagestreams.image.openshift.io "django": the object has been modified; please apply your changes to the latest version and try again
+Error from server (Conflict): error when applying patch:
+{"metadata":{"resourceVersion":"3821609"}}
+to:
+Resource: "image.openshift.io/v1, Resource=imagestreams", GroupVersionKind: "image.openshift.io/v1, Kind=ImageStream"
+Name: "nginx", Namespace: "sample-blog"
+for: "sample-blog_manifest.yaml": error when patching "sample-blog_manifest.yaml": Operation cannot be fulfilled on imagestreams.image.openshift.io "nginx": the object has been modified; please apply your changes to the latest version and try again
+Error from server (Conflict): error when applying patch:
+{"metadata":{"resourceVersion":"3821612"}}
+to:
+Resource: "route.openshift.io/v1, Resource=routes", GroupVersionKind: "route.openshift.io/v1, Kind=Route"
+Name: "nginx", Namespace: "sample-blog"
+for: "sample-blog_manifest.yaml": error when patching "sample-blog_manifest.yaml": Operation cannot be fulfilled on routes.route.openshift.io "nginx": the object has been modified; please apply your changes to the latest version and try again
+[ec2-user@ip-172-31-43-114 sample-blog]$

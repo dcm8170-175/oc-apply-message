@@ -1,0 +1,2511 @@
+
+[ec2-user@ip-172-31-43-114 sample-blog]$ cat sample-blog_manifest.yaml
+
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      k8s.ovn.org/pod-networks: '{"default":{"ip_addresses":["10.131.0.74/23"],"mac_address":"0a:58:0a:83:00:4a","gateway_ips":["10.131.0.1"],"routes":[{"dest":"10.128.0.0/14","nextHop":"10.131.0.1"},{"dest":"172.30.0.0/16","nextHop":"10.131.0.1"},{"dest":"169.254.0.5/32","nextHop":"10.131.0.1"},{"dest":"100.64.0.0/16","nextHop":"10.131.0.1"}],"ip_address":"10.131.0.74/23","gateway_ip":"10.131.0.1","role":"primary"}}'
+      k8s.v1.cni.cncf.io/network-status: |-
+        [{
+            "name": "ovn-kubernetes",
+            "interface": "eth0",
+            "ips": [
+                "10.131.0.74"
+            ],
+            "mac": "0a:58:0a:83:00:4a",
+            "default": true,
+            "dns": {}
+        }]
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Pod","metadata":{"annotations":{"k8s.ovn.org/pod-networks":"{\"default\":{\"ip_addresses\":[\"10.131.0.74/23\"],\"mac_address\":\"0a:58:0a:83:00:4a\",\"gateway_ips\":[\"10.131.0.1\"],\"routes\":[{\"dest\":\"10.128.0.0/14\",\"nextHop\":\"10.131.0.1\"},{\"dest\":\"172.30.0.0/16\",\"nextHop\":\"10.131.0.1\"},{\"dest\":\"169.254.0.5/32\",\"nextHop\":\"10.131.0.1\"},{\"dest\":\"100.64.0.0/16\",\"nextHop\":\"10.131.0.1\"}],\"ip_address\":\"10.131.0.74/23\",\"gateway_ip\":\"10.131.0.1\",\"role\":\"primary\"}}","k8s.v1.cni.cncf.io/network-status":"[{\n    \"name\": \"ovn-kubernetes\",\n    \"interface\": \"eth0\",\n    \"ips\": [\n        \"10.131.0.74\"\n    ],\n    \"mac\": \"0a:58:0a:83:00:4a\",\n    \"default\": true,\n    \"dns\": {}\n}]","openshift.io/build.name":"django-1","openshift.io/scc":"splunkforwarder"},"creationTimestamp":"2024-12-12T00:43:07Z","labels":{"openshift.io/build.name":"django-1"},"name":"django-1-build","namespace":"sample-blog","ownerReferences":[{"apiVersion":"build.openshift.io/v1","controller":true,"kind":"Build","name":"django-1","uid":"5386f104-ba8f-4c8f-91ff-4d0386a75b24"}],"resourceVersion":"3745729","uid":"f088e2bb-62c2-40fc-88cd-4c013e5b0863"},"spec":{"activeDeadlineSeconds":604800,"containers":[{"args":["openshift-docker-build","--v=0"],"env":[{"name":"BUILD","value":"{\"kind\":\"Build\",\"apiVersion\":\"build.openshift.io/v1\",\"metadata\":{\"name\":\"django-1\",\"namespace\":\"sample-blog\",\"uid\":\"5386f104-ba8f-4c8f-91ff-4d0386a75b24\",\"resourceVersion\":\"704980\",\"generation\":1,\"creationTimestamp\":\"2024-12-10T00:29:05Z\",\"labels\":{\"build\":\"django\",\"buildconfig\":\"django\",\"openshift.io/build-config.name\":\"django\",\"openshift.io/build.start-policy\":\"Serial\"},\"annotations\":{\"openshift.io/build-config.name\":\"django\",\"openshift.io/build.number\":\"1\"},\"ownerReferences\":[{\"apiVersion\":\"build.openshift.io/v1\",\"kind\":\"BuildConfig\",\"name\":\"django\",\"uid\":\"b2a8482b-8733-4e7c-bc33-874a0fd6f109\",\"controller\":true}],\"managedFields\":[{\"manager\":\"openshift-apiserver\",\"operation\":\"Update\",\"apiVersion\":\"build.openshift.io/v1\",\"time\":\"2024-12-10T00:29:05Z\",\"fieldsType\":\"FieldsV1\",\"fieldsV1\":{\"f:metadata\":{\"f:annotations\":{\".\":{},\"f:openshift.io/build-config.name\":{},\"f:openshift.io/build.number\":{}},\"f:labels\":{\".\":{},\"f:build\":{},\"f:buildconfig\":{},\"f:openshift.io/build-config.name\":{},\"f:openshift.io/build.start-policy\":{}},\"f:ownerReferences\":{\".\":{},\"k:{\\\"uid\\\":\\\"b2a8482b-8733-4e7c-bc33-874a0fd6f109\\\"}\":{}}},\"f:spec\":{\"f:output\":{\"f:to\":{}},\"f:revision\":{\".\":{},\"f:git\":{\".\":{},\"f:author\":{\".\":{},\"f:email\":{},\"f:name\":{}},\"f:commit\":{},\"f:committer\":{\".\":{},\"f:email\":{},\"f:name\":{}},\"f:message\":{}},\"f:type\":{}},\"f:serviceAccount\":{},\"f:source\":{\"f:binary\":{},\"f:type\":{}},\"f:strategy\":{\"f:dockerStrategy\":{},\"f:type\":{}}},\"f:status\":{\"f:conditions\":{\".\":{},\"k:{\\\"type\\\":\\\"New\\\"}\":{\".\":{},\"f:lastTransitionTime\":{},\"f:lastUpdateTime\":{},\"f:status\":{},\"f:type\":{}}},\"f:config\":{},\"f:phase\":{}}}}]},\"spec\":{\"serviceAccount\":\"builder\",\"source\":{\"type\":\"Binary\",\"binary\":{}},\"revision\":{\"type\":\"Git\",\"git\":{\"commit\":\"8bd1e9b48692315f2b3320b7ad730fbc6aaceb66\",\"author\":{\"name\":\"skitamura7446\",\"email\":\"46037102+skitamura7446@users.noreply.github.com\"},\"committer\":{\"name\":\"GitHub\",\"email\":\"noreply@github.com\"},\"message\":\"Update README.md\"}},\"strategy\":{\"type\":\"Docker\",\"dockerStrategy\":{\"pullSecret\":{\"name\":\"builder-dockercfg-gq87h\"}}},\"output\":{\"to\":{\"kind\":\"DockerImage\",\"name\":\"image-registry.openshift-image-registry.svc:5000/sample-blog/django:latest\"},\"pushSecret\":{\"name\":\"builder-dockercfg-gq87h\"}},\"resources\":{},\"postCommit\":{},\"nodeSelector\":null},\"status\":{\"phase\":\"New\",\"outputDockerImageReference\":\"image-registry.openshift-image-registry.svc:5000/sample-blog/django:latest\",\"config\":{\"kind\":\"BuildConfig\",\"namespace\":\"sample-blog\",\"name\":\"django\"},\"output\":{},\"conditions\":[{\"type\":\"New\",\"status\":\"True\",\"lastUpdateTime\":\"2024-12-10T00:29:05Z\",\"lastTransitionTime\":\"2024-12-10T00:29:05Z\"}]}}\n"},{"name":"LANG","value":"C.utf8"},{"name":"PUSH_DOCKERCFG_PATH","value":"/var/run/secrets/openshift.io/push"},{"name":"PULL_DOCKERCFG_PATH","value":"/var/run/secrets/openshift.io/pull"},{"name":"BUILD_REGISTRIES_CONF_PATH","value":"/var/run/configs/openshift.io/build-system/registries.conf"},{"name":"BUILD_REGISTRIES_DIR_PATH","value":"/var/run/configs/openshift.io/build-system/registries.d"},{"name":"BUILD_SIGNATURE_POLICY_PATH","value":"/var/run/configs/openshift.io/build-system/policy.json"},{"name":"BUILD_STORAGE_CONF_PATH","value":"/var/run/configs/openshift.io/build-system/storage.conf"},{"name":"BUILD_BLOBCACHE_DIR","value":"/var/cache/blobs"},{"name":"HTTP_PROXY"},{"name":"http_proxy"},{"name":"HTTPS_PROXY"},{"name":"https_proxy"},{"name":"NO_PROXY"},{"name":"no_proxy"}],"image":"quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fde2db2055c6a57aa8492b74e4d4913fbbd30d4bdf449a2a5c4d896d9391e85a","imagePullPolicy":"IfNotPresent","name":"docker-build","resources":{},"securityContext":{"privileged":true,"runAsGroup":0,"runAsUser":0,"seccompProfile":{"type":"Unconfined"}},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"FallbackToLogsOnError","volumeMounts":[{"mountPath":"/var/lib/kubelet/config.json","name":"node-pullsecrets"},{"mountPath":"/tmp/build","name":"buildworkdir"},{"mountPath":"/var/lib/containers/cache","name":"buildcachedir"},{"mountPath":"/var/run/secrets/openshift.io/push","name":"builder-dockercfg-gq87h-push","readOnly":true},{"mountPath":"/var/run/secrets/openshift.io/pull","name":"builder-dockercfg-gq87h-pull","readOnly":true},{"mountPath":"/var/run/configs/openshift.io/build-system","name":"build-system-configs","readOnly":true},{"mountPath":"/var/run/configs/openshift.io/certs","name":"build-ca-bundles"},{"mountPath":"/var/run/configs/openshift.io/pki","name":"build-proxy-ca-bundles"},{"mountPath":"/var/lib/containers","name":"container-storage-root"},{"mountPath":"/var/run/containers","name":"container-storage-run"},{"mountPath":"/var/cache/blobs","name":"build-blob-cache"},{"mountPath":"/var/run/secrets/kubernetes.io/serviceaccount","name":"kube-api-access-l92zw","readOnly":true}]}],"dnsPolicy":"ClusterFirst","enableServiceLinks":true,"imagePullSecrets":[{"name":"builder-dockercfg-gq87h"}],"initContainers":[{"args":["openshift-git-clone","--v=0"],"env":[{"name":"BUILD","value":"{\"kind\":\"Build\",\"apiVersion\":\"build.openshift.io/v1\",\"metadata\":{\"name\":\"django-1\",\"namespace\":\"sample-blog\",\"uid\":\"5386f104-ba8f-4c8f-91ff-4d0386a75b24\",\"resourceVersion\":\"704980\",\"generation\":1,\"creationTimestamp\":\"2024-12-10T00:29:05Z\",\"labels\":{\"build\":\"django\",\"buildconfig\":\"django\",\"openshift.io/build-config.name\":\"django\",\"openshift.io/build.start-policy\":\"Serial\"},\"annotations\":{\"openshift.io/build-config.name\":\"django\",\"openshift.io/build.number\":\"1\"},\"ownerReferences\":[{\"apiVersion\":\"build.openshift.io/v1\",\"kind\":\"BuildConfig\",\"name\":\"django\",\"uid\":\"b2a8482b-8733-4e7c-bc33-874a0fd6f109\",\"controller\":true}],\"managedFields\":[{\"manager\":\"openshift-apiserver\",\"operation\":\"Update\",\"apiVersion\":\"build.openshift.io/v1\",\"time\":\"2024-12-10T00:29:05Z\",\"fieldsType\":\"FieldsV1\",\"fieldsV1\":{\"f:metadata\":{\"f:annotations\":{\".\":{},\"f:openshift.io/build-config.name\":{},\"f:openshift.io/build.number\":{}},\"f:labels\":{\".\":{},\"f:build\":{},\"f:buildconfig\":{},\"f:openshift.io/build-config.name\":{},\"f:openshift.io/build.start-policy\":{}},\"f:ownerReferences\":{\".\":{},\"k:{\\\"uid\\\":\\\"b2a8482b-8733-4e7c-bc33-874a0fd6f109\\\"}\":{}}},\"f:spec\":{\"f:output\":{\"f:to\":{}},\"f:revision\":{\".\":{},\"f:git\":{\".\":{},\"f:author\":{\".\":{},\"f:email\":{},\"f:name\":{}},\"f:commit\":{},\"f:committer\":{\".\":{},\"f:email\":{},\"f:name\":{}},\"f:message\":{}},\"f:type\":{}},\"f:serviceAccount\":{},\"f:source\":{\"f:binary\":{},\"f:type\":{}},\"f:strategy\":{\"f:dockerStrategy\":{},\"f:type\":{}}},\"f:status\":{\"f:conditions\":{\".\":{},\"k:{\\\"type\\\":\\\"New\\\"}\":{\".\":{},\"f:lastTransitionTime\":{},\"f:lastUpdateTime\":{},\"f:status\":{},\"f:type\":{}}},\"f:config\":{},\"f:phase\":{}}}}]},\"spec\":{\"serviceAccount\":\"builder\",\"source\":{\"type\":\"Binary\",\"binary\":{}},\"revision\":{\"type\":\"Git\",\"git\":{\"commit\":\"8bd1e9b48692315f2b3320b7ad730fbc6aaceb66\",\"author\":{\"name\":\"skitamura7446\",\"email\":\"46037102+skitamura7446@users.noreply.github.com\"},\"committer\":{\"name\":\"GitHub\",\"email\":\"noreply@github.com\"},\"message\":\"Update README.md\"}},\"strategy\":{\"type\":\"Docker\",\"dockerStrategy\":{\"pullSecret\":{\"name\":\"builder-dockercfg-gq87h\"}}},\"output\":{\"to\":{\"kind\":\"DockerImage\",\"name\":\"image-registry.openshift-image-registry.svc:5000/sample-blog/django:latest\"},\"pushSecret\":{\"name\":\"builder-dockercfg-gq87h\"}},\"resources\":{},\"postCommit\":{},\"nodeSelector\":null},\"status\":{\"phase\":\"New\",\"outputDockerImageReference\":\"image-registry.openshift-image-registry.svc:5000/sample-blog/django:latest\",\"config\":{\"kind\":\"BuildConfig\",\"namespace\":\"sample-blog\",\"name\":\"django\"},\"output\":{},\"conditions\":[{\"type\":\"New\",\"status\":\"True\",\"lastUpdateTime\":\"2024-12-10T00:29:05Z\",\"lastTransitionTime\":\"2024-12-10T00:29:05Z\"}]}}\n"},{"name":"LANG","value":"C.utf8"},{"name":"BUILD_REGISTRIES_CONF_PATH","value":"/var/run/configs/openshift.io/build-system/registries.conf"},{"name":"BUILD_REGISTRIES_DIR_PATH","value":"/var/run/configs/openshift.io/build-system/registries.d"},{"name":"BUILD_SIGNATURE_POLICY_PATH","value":"/var/run/configs/openshift.io/build-system/policy.json"},{"name":"BUILD_STORAGE_CONF_PATH","value":"/var/run/configs/openshift.io/build-system/storage.conf"},{"name":"BUILD_BLOBCACHE_DIR","value":"/var/cache/blobs"},{"name":"HTTP_PROXY"},{"name":"http_proxy"},{"name":"HTTPS_PROXY"},{"name":"https_proxy"},{"name":"NO_PROXY"},{"name":"no_proxy"}],"image":"quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fde2db2055c6a57aa8492b74e4d4913fbbd30d4bdf449a2a5c4d896d9391e85a","imagePullPolicy":"IfNotPresent","name":"git-clone","resources":{},"securityContext":{"capabilities":{"add":["CHOWN","DAC_OVERRIDE"],"drop":["ALL"]},"privileged":false,"runAsGroup":0,"runAsNonRoot":false,"runAsUser":0,"seccompProfile":{"type":"RuntimeDefault"}},"stdin":true,"stdinOnce":true,"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"FallbackToLogsOnError","volumeMounts":[{"mountPath":"/tmp/build","name":"buildworkdir"},{"mountPath":"/var/run/configs/openshift.io/build-system","name":"build-system-configs","readOnly":true},{"mountPath":"/var/run/configs/openshift.io/certs","name":"build-ca-bundles"},{"mountPath":"/var/run/configs/openshift.io/pki","name":"build-proxy-ca-bundles"},{"mountPath":"/var/cache/blobs","name":"build-blob-cache"},{"mountPath":"/var/run/secrets/kubernetes.io/serviceaccount","name":"kube-api-access-l92zw","readOnly":true}]},{"args":["openshift-manage-dockerfile","--v=0"],"env":[{"name":"BUILD","value":"{\"kind\":\"Build\",\"apiVersion\":\"build.openshift.io/v1\",\"metadata\":{\"name\":\"django-1\",\"namespace\":\"sample-blog\",\"uid\":\"5386f104-ba8f-4c8f-91ff-4d0386a75b24\",\"resourceVersion\":\"704980\",\"generation\":1,\"creationTimestamp\":\"2024-12-10T00:29:05Z\",\"labels\":{\"build\":\"django\",\"buildconfig\":\"django\",\"openshift.io/build-config.name\":\"django\",\"openshift.io/build.start-policy\":\"Serial\"},\"annotations\":{\"openshift.io/build-config.name\":\"django\",\"openshift.io/build.number\":\"1\"},\"ownerReferences\":[{\"apiVersion\":\"build.openshift.io/v1\",\"kind\":\"BuildConfig\",\"name\":\"django\",\"uid\":\"b2a8482b-8733-4e7c-bc33-874a0fd6f109\",\"controller\":true}],\"managedFields\":[{\"manager\":\"openshift-apiserver\",\"operation\":\"Update\",\"apiVersion\":\"build.openshift.io/v1\",\"time\":\"2024-12-10T00:29:05Z\",\"fieldsType\":\"FieldsV1\",\"fieldsV1\":{\"f:metadata\":{\"f:annotations\":{\".\":{},\"f:openshift.io/build-config.name\":{},\"f:openshift.io/build.number\":{}},\"f:labels\":{\".\":{},\"f:build\":{},\"f:buildconfig\":{},\"f:openshift.io/build-config.name\":{},\"f:openshift.io/build.start-policy\":{}},\"f:ownerReferences\":{\".\":{},\"k:{\\\"uid\\\":\\\"b2a8482b-8733-4e7c-bc33-874a0fd6f109\\\"}\":{}}},\"f:spec\":{\"f:output\":{\"f:to\":{}},\"f:revision\":{\".\":{},\"f:git\":{\".\":{},\"f:author\":{\".\":{},\"f:email\":{},\"f:name\":{}},\"f:commit\":{},\"f:committer\":{\".\":{},\"f:email\":{},\"f:name\":{}},\"f:message\":{}},\"f:type\":{}},\"f:serviceAccount\":{},\"f:source\":{\"f:binary\":{},\"f:type\":{}},\"f:strategy\":{\"f:dockerStrategy\":{},\"f:type\":{}}},\"f:status\":{\"f:conditions\":{\".\":{},\"k:{\\\"type\\\":\\\"New\\\"}\":{\".\":{},\"f:lastTransitionTime\":{},\"f:lastUpdateTime\":{},\"f:status\":{},\"f:type\":{}}},\"f:config\":{},\"f:phase\":{}}}}]},\"spec\":{\"serviceAccount\":\"builder\",\"source\":{\"type\":\"Binary\",\"binary\":{}},\"revision\":{\"type\":\"Git\",\"git\":{\"commit\":\"8bd1e9b48692315f2b3320b7ad730fbc6aaceb66\",\"author\":{\"name\":\"skitamura7446\",\"email\":\"46037102+skitamura7446@users.noreply.github.com\"},\"committer\":{\"name\":\"GitHub\",\"email\":\"noreply@github.com\"},\"message\":\"Update README.md\"}},\"strategy\":{\"type\":\"Docker\",\"dockerStrategy\":{\"pullSecret\":{\"name\":\"builder-dockercfg-gq87h\"}}},\"output\":{\"to\":{\"kind\":\"DockerImage\",\"name\":\"image-registry.openshift-image-registry.svc:5000/sample-blog/django:latest\"},\"pushSecret\":{\"name\":\"builder-dockercfg-gq87h\"}},\"resources\":{},\"postCommit\":{},\"nodeSelector\":null},\"status\":{\"phase\":\"New\",\"outputDockerImageReference\":\"image-registry.openshift-image-registry.svc:5000/sample-blog/django:latest\",\"config\":{\"kind\":\"BuildConfig\",\"namespace\":\"sample-blog\",\"name\":\"django\"},\"output\":{},\"conditions\":[{\"type\":\"New\",\"status\":\"True\",\"lastUpdateTime\":\"2024-12-10T00:29:05Z\",\"lastTransitionTime\":\"2024-12-10T00:29:05Z\"}]}}\n"},{"name":"LANG","value":"C.utf8"},{"name":"BUILD_REGISTRIES_CONF_PATH","value":"/var/run/configs/openshift.io/build-system/registries.conf"},{"name":"BUILD_REGISTRIES_DIR_PATH","value":"/var/run/configs/openshift.io/build-system/registries.d"},{"name":"BUILD_SIGNATURE_POLICY_PATH","value":"/var/run/configs/openshift.io/build-system/policy.json"},{"name":"BUILD_STORAGE_CONF_PATH","value":"/var/run/configs/openshift.io/build-system/storage.conf"},{"name":"BUILD_BLOBCACHE_DIR","value":"/var/cache/blobs"},{"name":"HTTP_PROXY"},{"name":"http_proxy"},{"name":"HTTPS_PROXY"},{"name":"https_proxy"},{"name":"NO_PROXY"},{"name":"no_proxy"}],"image":"quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fde2db2055c6a57aa8492b74e4d4913fbbd30d4bdf449a2a5c4d896d9391e85a","imagePullPolicy":"IfNotPresent","name":"manage-dockerfile","resources":{},"securityContext":{"capabilities":{"add":["CHOWN","DAC_OVERRIDE"],"drop":["ALL"]},"privileged":false,"runAsGroup":0,"runAsNonRoot":false,"runAsUser":0,"seccompProfile":{"type":"RuntimeDefault"}},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"FallbackToLogsOnError","volumeMounts":[{"mountPath":"/tmp/build","name":"buildworkdir"},{"mountPath":"/var/run/configs/openshift.io/build-system","name":"build-system-configs","readOnly":true},{"mountPath":"/var/run/configs/openshift.io/certs","name":"build-ca-bundles"},{"mountPath":"/var/run/configs/openshift.io/pki","name":"build-proxy-ca-bundles"},{"mountPath":"/var/cache/blobs","name":"build-blob-cache"},{"mountPath":"/var/run/secrets/kubernetes.io/serviceaccount","name":"kube-api-access-l92zw","readOnly":true}]}],"nodeName":"ip-10-0-28-244.ap-northeast-1.compute.internal","nodeSelector":{"kubernetes.io/os":"linux"},"preemptionPolicy":"PreemptLowerPriority","priority":0,"restartPolicy":"Never","schedulerName":"default-scheduler","securityContext":{},"serviceAccount":"builder","serviceAccountName":"builder","terminationGracePeriodSeconds":30,"tolerations":[{"effect":"NoExecute","key":"node.kubernetes.io/not-ready","operator":"Exists","tolerationSeconds":300},{"effect":"NoExecute","key":"node.kubernetes.io/unreachable","operator":"Exists","tolerationSeconds":300}],"volumes":[{"hostPath":{"path":"/var/lib/containers/cache","type":""},"name":"buildcachedir"},{"emptyDir":{},"name":"buildworkdir"},{"hostPath":{"path":"/var/lib/kubelet/config.json","type":"File"},"name":"node-pullsecrets"},{"name":"builder-dockercfg-gq87h-push","secret":{"defaultMode":384,"secretName":"builder-dockercfg-gq87h"}},{"name":"builder-dockercfg-gq87h-pull","secret":{"defaultMode":384,"secretName":"builder-dockercfg-gq87h"}},{"configMap":{"defaultMode":420,"name":"django-1-sys-config"},"name":"build-system-configs"},{"configMap":{"defaultMode":420,"items":[{"key":"service-ca.crt","path":"certs.d/image-registry.openshift-image-registry.svc:5000/ca.crt"}],"name":"django-1-ca"},"name":"build-ca-bundles"},{"configMap":{"defaultMode":420,"items":[{"key":"ca-bundle.crt","path":"tls-ca-bundle.pem"}],"name":"django-1-global-ca"},"name":"build-proxy-ca-bundles"},{"emptyDir":{},"name":"container-storage-root"},{"emptyDir":{},"name":"container-storage-run"},{"emptyDir":{},"name":"build-blob-cache"},{"name":"kube-api-access-l92zw","projected":{"defaultMode":420,"sources":[{"serviceAccountToken":{"expirationSeconds":3607,"path":"token"}},{"configMap":{"items":[{"key":"ca.crt","path":"ca.crt"}],"name":"kube-root-ca.crt"}},{"downwardAPI":{"items":[{"fieldRef":{"apiVersion":"v1","fieldPath":"metadata.namespace"},"path":"namespace"}]}},{"configMap":{"items":[{"key":"service-ca.crt","path":"service-ca.crt"}],"name":"openshift-service-ca.crt"}}]}}]},"status":{"conditions":[{"lastProbeTime":null,"lastTransitionTime":"2024-12-12T00:43:07Z","status":"False","type":"PodReadyToStartContainers"},{"lastProbeTime":null,"lastTransitionTime":"2024-12-12T00:43:07Z","message":"containers with incomplete status: [git-clone manage-dockerfile]","reason":"ContainersNotInitialized","status":"False","type":"Initialized"},{"lastProbeTime":null,"lastTransitionTime":"2024-12-12T00:43:07Z","message":"containers with unready status: [docker-build]","reason":"ContainersNotReady","status":"False","type":"Ready"},{"lastProbeTime":null,"lastTransitionTime":"2024-12-12T00:43:07Z","message":"containers with unready status: [docker-build]","reason":"ContainersNotReady","status":"False","type":"ContainersReady"},{"lastProbeTime":null,"lastTransitionTime":"2024-12-12T00:43:07Z","status":"True","type":"PodScheduled"}],"containerStatuses":[{"image":"quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fde2db2055c6a57aa8492b74e4d4913fbbd30d4bdf449a2a5c4d896d9391e85a","imageID":"","lastState":{},"name":"docker-build","ready":false,"restartCount":0,"started":false,"state":{"waiting":{"reason":"PodInitializing"}}}],"hostIP":"10.0.28.244","hostIPs":[{"ip":"10.0.28.244"}],"initContainerStatuses":[{"image":"quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fde2db2055c6a57aa8492b74e4d4913fbbd30d4bdf449a2a5c4d896d9391e85a","imageID":"","lastState":{},"name":"git-clone","ready":false,"restartCount":0,"started":false,"state":{"waiting":{"reason":"PodInitializing"}}},{"image":"quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fde2db2055c6a57aa8492b74e4d4913fbbd30d4bdf449a2a5c4d896d9391e85a","imageID":"","lastState":{},"name":"manage-dockerfile","ready":false,"restartCount":0,"started":false,"state":{"waiting":{"reason":"PodInitializing"}}}],"phase":"Pending","qosClass":"BestEffort","startTime":"2024-12-12T00:43:07Z"}}
+      openshift.io/build.name: django-1
+      openshift.io/scc: splunkforwarder
+    creationTimestamp: "2024-12-12T00:43:07Z"
+    labels:
+      openshift.io/build.name: django-1
+    name: django-1-build
+    namespace: sample-blog
+    ownerReferences:
+    - apiVersion: build.openshift.io/v1
+      controller: true
+      kind: Build
+      name: django-1
+      uid: 5386f104-ba8f-4c8f-91ff-4d0386a75b24
+    resourceVersion: "3821547"
+    uid: f088e2bb-62c2-40fc-88cd-4c013e5b0863
+  spec:
+    activeDeadlineSeconds: 604800
+    containers:
+    - args:
+      - openshift-docker-build
+      - --v=0
+      env:
+      - name: BUILD
+        value: |
+          {"kind":"Build","apiVersion":"build.openshift.io/v1","metadata":{"name":"django-1","namespace":"sample-blog","uid":"5386f104-ba8f-4c8f-91ff-4d0386a75b24","resourceVersion":"704980","generation":1,"creationTimestamp":"2024-12-10T00:29:05Z","labels":{"build":"django","buildconfig":"django","openshift.io/build-config.name":"django","openshift.io/build.start-policy":"Serial"},"annotations":{"openshift.io/build-config.name":"django","openshift.io/build.number":"1"},"ownerReferences":[{"apiVersion":"build.openshift.io/v1","kind":"BuildConfig","name":"django","uid":"b2a8482b-8733-4e7c-bc33-874a0fd6f109","controller":true}],"managedFields":[{"manager":"openshift-apiserver","operation":"Update","apiVersion":"build.openshift.io/v1","time":"2024-12-10T00:29:05Z","fieldsType":"FieldsV1","fieldsV1":{"f:metadata":{"f:annotations":{".":{},"f:openshift.io/build-config.name":{},"f:openshift.io/build.number":{}},"f:labels":{".":{},"f:build":{},"f:buildconfig":{},"f:openshift.io/build-config.name":{},"f:openshift.io/build.start-policy":{}},"f:ownerReferences":{".":{},"k:{\"uid\":\"b2a8482b-8733-4e7c-bc33-874a0fd6f109\"}":{}}},"f:spec":{"f:output":{"f:to":{}},"f:revision":{".":{},"f:git":{".":{},"f:author":{".":{},"f:email":{},"f:name":{}},"f:commit":{},"f:committer":{".":{},"f:email":{},"f:name":{}},"f:message":{}},"f:type":{}},"f:serviceAccount":{},"f:source":{"f:binary":{},"f:type":{}},"f:strategy":{"f:dockerStrategy":{},"f:type":{}}},"f:status":{"f:conditions":{".":{},"k:{\"type\":\"New\"}":{".":{},"f:lastTransitionTime":{},"f:lastUpdateTime":{},"f:status":{},"f:type":{}}},"f:config":{},"f:phase":{}}}}]},"spec":{"serviceAccount":"builder","source":{"type":"Binary","binary":{}},"revision":{"type":"Git","git":{"commit":"8bd1e9b48692315f2b3320b7ad730fbc6aaceb66","author":{"name":"skitamura7446","email":"46037102+skitamura7446@users.noreply.github.com"},"committer":{"name":"GitHub","email":"noreply@github.com"},"message":"Update README.md"}},"strategy":{"type":"Docker","dockerStrategy":{"pullSecret":{"name":"builder-dockercfg-gq87h"}}},"output":{"to":{"kind":"DockerImage","name":"image-registry.openshift-image-registry.svc:5000/sample-blog/django:latest"},"pushSecret":{"name":"builder-dockercfg-gq87h"}},"resources":{},"postCommit":{},"nodeSelector":null},"status":{"phase":"New","outputDockerImageReference":"image-registry.openshift-image-registry.svc:5000/sample-blog/django:latest","config":{"kind":"BuildConfig","namespace":"sample-blog","name":"django"},"output":{},"conditions":[{"type":"New","status":"True","lastUpdateTime":"2024-12-10T00:29:05Z","lastTransitionTime":"2024-12-10T00:29:05Z"}]}}
+      - name: LANG
+        value: C.utf8
+      - name: PUSH_DOCKERCFG_PATH
+        value: /var/run/secrets/openshift.io/push
+      - name: PULL_DOCKERCFG_PATH
+        value: /var/run/secrets/openshift.io/pull
+      - name: BUILD_REGISTRIES_CONF_PATH
+        value: /var/run/configs/openshift.io/build-system/registries.conf
+      - name: BUILD_REGISTRIES_DIR_PATH
+        value: /var/run/configs/openshift.io/build-system/registries.d
+      - name: BUILD_SIGNATURE_POLICY_PATH
+        value: /var/run/configs/openshift.io/build-system/policy.json
+      - name: BUILD_STORAGE_CONF_PATH
+        value: /var/run/configs/openshift.io/build-system/storage.conf
+      - name: BUILD_BLOBCACHE_DIR
+        value: /var/cache/blobs
+      - name: HTTP_PROXY
+      - name: http_proxy
+      - name: HTTPS_PROXY
+      - name: https_proxy
+      - name: NO_PROXY
+      - name: no_proxy
+      image: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fde2db2055c6a57aa8492b74e4d4913fbbd30d4bdf449a2a5c4d896d9391e85a
+      imagePullPolicy: IfNotPresent
+      name: docker-build
+      resources: {}
+      securityContext:
+        privileged: true
+        runAsGroup: 0
+        runAsUser: 0
+        seccompProfile:
+          type: Unconfined
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: FallbackToLogsOnError
+      volumeMounts:
+      - mountPath: /var/lib/kubelet/config.json
+        name: node-pullsecrets
+      - mountPath: /tmp/build
+        name: buildworkdir
+      - mountPath: /var/lib/containers/cache
+        name: buildcachedir
+      - mountPath: /var/run/secrets/openshift.io/push
+        name: builder-dockercfg-gq87h-push
+        readOnly: true
+      - mountPath: /var/run/secrets/openshift.io/pull
+        name: builder-dockercfg-gq87h-pull
+        readOnly: true
+      - mountPath: /var/run/configs/openshift.io/build-system
+        name: build-system-configs
+        readOnly: true
+      - mountPath: /var/run/configs/openshift.io/certs
+        name: build-ca-bundles
+      - mountPath: /var/run/configs/openshift.io/pki
+        name: build-proxy-ca-bundles
+      - mountPath: /var/lib/containers
+        name: container-storage-root
+      - mountPath: /var/run/containers
+        name: container-storage-run
+      - mountPath: /var/cache/blobs
+        name: build-blob-cache
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-l92zw
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: builder-dockercfg-gq87h
+    initContainers:
+    - args:
+      - openshift-git-clone
+      - --v=0
+      env:
+      - name: BUILD
+        value: |
+          {"kind":"Build","apiVersion":"build.openshift.io/v1","metadata":{"name":"django-1","namespace":"sample-blog","uid":"5386f104-ba8f-4c8f-91ff-4d0386a75b24","resourceVersion":"704980","generation":1,"creationTimestamp":"2024-12-10T00:29:05Z","labels":{"build":"django","buildconfig":"django","openshift.io/build-config.name":"django","openshift.io/build.start-policy":"Serial"},"annotations":{"openshift.io/build-config.name":"django","openshift.io/build.number":"1"},"ownerReferences":[{"apiVersion":"build.openshift.io/v1","kind":"BuildConfig","name":"django","uid":"b2a8482b-8733-4e7c-bc33-874a0fd6f109","controller":true}],"managedFields":[{"manager":"openshift-apiserver","operation":"Update","apiVersion":"build.openshift.io/v1","time":"2024-12-10T00:29:05Z","fieldsType":"FieldsV1","fieldsV1":{"f:metadata":{"f:annotations":{".":{},"f:openshift.io/build-config.name":{},"f:openshift.io/build.number":{}},"f:labels":{".":{},"f:build":{},"f:buildconfig":{},"f:openshift.io/build-config.name":{},"f:openshift.io/build.start-policy":{}},"f:ownerReferences":{".":{},"k:{\"uid\":\"b2a8482b-8733-4e7c-bc33-874a0fd6f109\"}":{}}},"f:spec":{"f:output":{"f:to":{}},"f:revision":{".":{},"f:git":{".":{},"f:author":{".":{},"f:email":{},"f:name":{}},"f:commit":{},"f:committer":{".":{},"f:email":{},"f:name":{}},"f:message":{}},"f:type":{}},"f:serviceAccount":{},"f:source":{"f:binary":{},"f:type":{}},"f:strategy":{"f:dockerStrategy":{},"f:type":{}}},"f:status":{"f:conditions":{".":{},"k:{\"type\":\"New\"}":{".":{},"f:lastTransitionTime":{},"f:lastUpdateTime":{},"f:status":{},"f:type":{}}},"f:config":{},"f:phase":{}}}}]},"spec":{"serviceAccount":"builder","source":{"type":"Binary","binary":{}},"revision":{"type":"Git","git":{"commit":"8bd1e9b48692315f2b3320b7ad730fbc6aaceb66","author":{"name":"skitamura7446","email":"46037102+skitamura7446@users.noreply.github.com"},"committer":{"name":"GitHub","email":"noreply@github.com"},"message":"Update README.md"}},"strategy":{"type":"Docker","dockerStrategy":{"pullSecret":{"name":"builder-dockercfg-gq87h"}}},"output":{"to":{"kind":"DockerImage","name":"image-registry.openshift-image-registry.svc:5000/sample-blog/django:latest"},"pushSecret":{"name":"builder-dockercfg-gq87h"}},"resources":{},"postCommit":{},"nodeSelector":null},"status":{"phase":"New","outputDockerImageReference":"image-registry.openshift-image-registry.svc:5000/sample-blog/django:latest","config":{"kind":"BuildConfig","namespace":"sample-blog","name":"django"},"output":{},"conditions":[{"type":"New","status":"True","lastUpdateTime":"2024-12-10T00:29:05Z","lastTransitionTime":"2024-12-10T00:29:05Z"}]}}
+      - name: LANG
+        value: C.utf8
+      - name: BUILD_REGISTRIES_CONF_PATH
+        value: /var/run/configs/openshift.io/build-system/registries.conf
+      - name: BUILD_REGISTRIES_DIR_PATH
+        value: /var/run/configs/openshift.io/build-system/registries.d
+      - name: BUILD_SIGNATURE_POLICY_PATH
+        value: /var/run/configs/openshift.io/build-system/policy.json
+      - name: BUILD_STORAGE_CONF_PATH
+        value: /var/run/configs/openshift.io/build-system/storage.conf
+      - name: BUILD_BLOBCACHE_DIR
+        value: /var/cache/blobs
+      - name: HTTP_PROXY
+      - name: http_proxy
+      - name: HTTPS_PROXY
+      - name: https_proxy
+      - name: NO_PROXY
+      - name: no_proxy
+      image: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fde2db2055c6a57aa8492b74e4d4913fbbd30d4bdf449a2a5c4d896d9391e85a
+      imagePullPolicy: IfNotPresent
+      name: git-clone
+      resources: {}
+      securityContext:
+        capabilities:
+          add:
+          - CHOWN
+          - DAC_OVERRIDE
+          drop:
+          - ALL
+        privileged: false
+        runAsGroup: 0
+        runAsNonRoot: false
+        runAsUser: 0
+        seccompProfile:
+          type: RuntimeDefault
+      stdin: true
+      stdinOnce: true
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: FallbackToLogsOnError
+      volumeMounts:
+      - mountPath: /tmp/build
+        name: buildworkdir
+      - mountPath: /var/run/configs/openshift.io/build-system
+        name: build-system-configs
+        readOnly: true
+      - mountPath: /var/run/configs/openshift.io/certs
+        name: build-ca-bundles
+      - mountPath: /var/run/configs/openshift.io/pki
+        name: build-proxy-ca-bundles
+      - mountPath: /var/cache/blobs
+        name: build-blob-cache
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-l92zw
+        readOnly: true
+    - args:
+      - openshift-manage-dockerfile
+      - --v=0
+      env:
+      - name: BUILD
+        value: |
+          {"kind":"Build","apiVersion":"build.openshift.io/v1","metadata":{"name":"django-1","namespace":"sample-blog","uid":"5386f104-ba8f-4c8f-91ff-4d0386a75b24","resourceVersion":"704980","generation":1,"creationTimestamp":"2024-12-10T00:29:05Z","labels":{"build":"django","buildconfig":"django","openshift.io/build-config.name":"django","openshift.io/build.start-policy":"Serial"},"annotations":{"openshift.io/build-config.name":"django","openshift.io/build.number":"1"},"ownerReferences":[{"apiVersion":"build.openshift.io/v1","kind":"BuildConfig","name":"django","uid":"b2a8482b-8733-4e7c-bc33-874a0fd6f109","controller":true}],"managedFields":[{"manager":"openshift-apiserver","operation":"Update","apiVersion":"build.openshift.io/v1","time":"2024-12-10T00:29:05Z","fieldsType":"FieldsV1","fieldsV1":{"f:metadata":{"f:annotations":{".":{},"f:openshift.io/build-config.name":{},"f:openshift.io/build.number":{}},"f:labels":{".":{},"f:build":{},"f:buildconfig":{},"f:openshift.io/build-config.name":{},"f:openshift.io/build.start-policy":{}},"f:ownerReferences":{".":{},"k:{\"uid\":\"b2a8482b-8733-4e7c-bc33-874a0fd6f109\"}":{}}},"f:spec":{"f:output":{"f:to":{}},"f:revision":{".":{},"f:git":{".":{},"f:author":{".":{},"f:email":{},"f:name":{}},"f:commit":{},"f:committer":{".":{},"f:email":{},"f:name":{}},"f:message":{}},"f:type":{}},"f:serviceAccount":{},"f:source":{"f:binary":{},"f:type":{}},"f:strategy":{"f:dockerStrategy":{},"f:type":{}}},"f:status":{"f:conditions":{".":{},"k:{\"type\":\"New\"}":{".":{},"f:lastTransitionTime":{},"f:lastUpdateTime":{},"f:status":{},"f:type":{}}},"f:config":{},"f:phase":{}}}}]},"spec":{"serviceAccount":"builder","source":{"type":"Binary","binary":{}},"revision":{"type":"Git","git":{"commit":"8bd1e9b48692315f2b3320b7ad730fbc6aaceb66","author":{"name":"skitamura7446","email":"46037102+skitamura7446@users.noreply.github.com"},"committer":{"name":"GitHub","email":"noreply@github.com"},"message":"Update README.md"}},"strategy":{"type":"Docker","dockerStrategy":{"pullSecret":{"name":"builder-dockercfg-gq87h"}}},"output":{"to":{"kind":"DockerImage","name":"image-registry.openshift-image-registry.svc:5000/sample-blog/django:latest"},"pushSecret":{"name":"builder-dockercfg-gq87h"}},"resources":{},"postCommit":{},"nodeSelector":null},"status":{"phase":"New","outputDockerImageReference":"image-registry.openshift-image-registry.svc:5000/sample-blog/django:latest","config":{"kind":"BuildConfig","namespace":"sample-blog","name":"django"},"output":{},"conditions":[{"type":"New","status":"True","lastUpdateTime":"2024-12-10T00:29:05Z","lastTransitionTime":"2024-12-10T00:29:05Z"}]}}
+      - name: LANG
+        value: C.utf8
+      - name: BUILD_REGISTRIES_CONF_PATH
+        value: /var/run/configs/openshift.io/build-system/registries.conf
+      - name: BUILD_REGISTRIES_DIR_PATH
+        value: /var/run/configs/openshift.io/build-system/registries.d
+      - name: BUILD_SIGNATURE_POLICY_PATH
+        value: /var/run/configs/openshift.io/build-system/policy.json
+      - name: BUILD_STORAGE_CONF_PATH
+        value: /var/run/configs/openshift.io/build-system/storage.conf
+      - name: BUILD_BLOBCACHE_DIR
+        value: /var/cache/blobs
+      - name: HTTP_PROXY
+      - name: http_proxy
+      - name: HTTPS_PROXY
+      - name: https_proxy
+      - name: NO_PROXY
+      - name: no_proxy
+      image: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fde2db2055c6a57aa8492b74e4d4913fbbd30d4bdf449a2a5c4d896d9391e85a
+      imagePullPolicy: IfNotPresent
+      name: manage-dockerfile
+      resources: {}
+      securityContext:
+        capabilities:
+          add:
+          - CHOWN
+          - DAC_OVERRIDE
+          drop:
+          - ALL
+        privileged: false
+        runAsGroup: 0
+        runAsNonRoot: false
+        runAsUser: 0
+        seccompProfile:
+          type: RuntimeDefault
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: FallbackToLogsOnError
+      volumeMounts:
+      - mountPath: /tmp/build
+        name: buildworkdir
+      - mountPath: /var/run/configs/openshift.io/build-system
+        name: build-system-configs
+        readOnly: true
+      - mountPath: /var/run/configs/openshift.io/certs
+        name: build-ca-bundles
+      - mountPath: /var/run/configs/openshift.io/pki
+        name: build-proxy-ca-bundles
+      - mountPath: /var/cache/blobs
+        name: build-blob-cache
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-l92zw
+        readOnly: true
+    nodeName: ip-10-0-28-244.ap-northeast-1.compute.internal
+    nodeSelector:
+      kubernetes.io/os: linux
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Never
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: builder
+    serviceAccountName: builder
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - hostPath:
+        path: /var/lib/containers/cache
+        type: ""
+      name: buildcachedir
+    - emptyDir: {}
+      name: buildworkdir
+    - hostPath:
+        path: /var/lib/kubelet/config.json
+        type: File
+      name: node-pullsecrets
+    - name: builder-dockercfg-gq87h-push
+      secret:
+        defaultMode: 384
+        secretName: builder-dockercfg-gq87h
+    - name: builder-dockercfg-gq87h-pull
+      secret:
+        defaultMode: 384
+        secretName: builder-dockercfg-gq87h
+    - configMap:
+        defaultMode: 420
+        name: django-1-sys-config
+      name: build-system-configs
+    - configMap:
+        defaultMode: 420
+        items:
+        - key: service-ca.crt
+          path: certs.d/image-registry.openshift-image-registry.svc:5000/ca.crt
+        name: django-1-ca
+      name: build-ca-bundles
+    - configMap:
+        defaultMode: 420
+        items:
+        - key: ca-bundle.crt
+          path: tls-ca-bundle.pem
+        name: django-1-global-ca
+      name: build-proxy-ca-bundles
+    - emptyDir: {}
+      name: container-storage-root
+    - emptyDir: {}
+      name: container-storage-run
+    - emptyDir: {}
+      name: build-blob-cache
+    - name: kube-api-access-l92zw
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+        - configMap:
+            items:
+            - key: service-ca.crt
+              path: service-ca.crt
+            name: openshift-service-ca.crt
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2024-12-12T00:43:07Z"
+      status: "False"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2024-12-12T00:43:07Z"
+      message: 'containers with incomplete status: [git-clone manage-dockerfile]'
+      reason: ContainersNotInitialized
+      status: "False"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2024-12-12T00:43:07Z"
+      message: 'containers with unready status: [docker-build]'
+      reason: ContainersNotReady
+      status: "False"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2024-12-12T00:43:07Z"
+      message: 'containers with unready status: [docker-build]'
+      reason: ContainersNotReady
+      status: "False"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2024-12-12T00:43:07Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - image: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fde2db2055c6a57aa8492b74e4d4913fbbd30d4bdf449a2a5c4d896d9391e85a
+      imageID: ""
+      lastState: {}
+      name: docker-build
+      ready: false
+      restartCount: 0
+      started: false
+      state:
+        waiting:
+          reason: PodInitializing
+    hostIP: 10.0.28.244
+    hostIPs:
+    - ip: 10.0.28.244
+    initContainerStatuses:
+    - image: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fde2db2055c6a57aa8492b74e4d4913fbbd30d4bdf449a2a5c4d896d9391e85a
+      imageID: ""
+      lastState: {}
+      name: git-clone
+      ready: false
+      restartCount: 0
+      started: false
+      state:
+        waiting:
+          reason: PodInitializing
+    - image: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fde2db2055c6a57aa8492b74e4d4913fbbd30d4bdf449a2a5c4d896d9391e85a
+      imageID: ""
+      lastState: {}
+      name: manage-dockerfile
+      ready: false
+      restartCount: 0
+      started: false
+      state:
+        waiting:
+          reason: PodInitializing
+    phase: Pending
+    qosClass: BestEffort
+    startTime: "2024-12-12T00:43:07Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      k8s.ovn.org/pod-networks: '{"default":{"ip_addresses":["10.131.0.7/23"],"mac_address":"0a:58:0a:83:00:07","gateway_ips":["10.131.0.1"],"routes":[{"dest":"10.128.0.0/14","nextHop":"10.131.0.1"},{"dest":"172.30.0.0/16","nextHop":"10.131.0.1"},{"dest":"169.254.0.5/32","nextHop":"10.131.0.1"},{"dest":"100.64.0.0/16","nextHop":"10.131.0.1"}],"ip_address":"10.131.0.7/23","gateway_ip":"10.131.0.1","role":"primary"}}'
+      k8s.v1.cni.cncf.io/network-status: |-
+        [{
+            "name": "ovn-kubernetes",
+            "interface": "eth0",
+            "ips": [
+                "10.131.0.7"
+            ],
+            "mac": "0a:58:0a:83:00:07",
+            "default": true,
+            "dns": {}
+        }]
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Pod","metadata":{"annotations":{"k8s.ovn.org/pod-networks":"{\"default\":{\"ip_addresses\":[\"10.131.0.7/23\"],\"mac_address\":\"0a:58:0a:83:00:07\",\"gateway_ips\":[\"10.131.0.1\"],\"routes\":[{\"dest\":\"10.128.0.0/14\",\"nextHop\":\"10.131.0.1\"},{\"dest\":\"172.30.0.0/16\",\"nextHop\":\"10.131.0.1\"},{\"dest\":\"169.254.0.5/32\",\"nextHop\":\"10.131.0.1\"},{\"dest\":\"100.64.0.0/16\",\"nextHop\":\"10.131.0.1\"}],\"ip_address\":\"10.131.0.7/23\",\"gateway_ip\":\"10.131.0.1\",\"role\":\"primary\"}}","k8s.v1.cni.cncf.io/network-status":"[{\n    \"name\": \"ovn-kubernetes\",\n    \"interface\": \"eth0\",\n    \"ips\": [\n        \"10.131.0.7\"\n    ],\n    \"mac\": \"0a:58:0a:83:00:07\",\n    \"default\": true,\n    \"dns\": {}\n}]","openshift.io/scc":"restricted-v2","seccomp.security.alpha.kubernetes.io/pod":"runtime/default"},"creationTimestamp":"2024-12-11T07:33:52Z","generateName":"django-5c4c6b8b-","labels":{"app":"django","pod-template-hash":"5c4c6b8b"},"name":"django-5c4c6b8b-fkdmh","namespace":"sample-blog","ownerReferences":[{"apiVersion":"apps/v1","blockOwnerDeletion":true,"controller":true,"kind":"ReplicaSet","name":"django-5c4c6b8b","uid":"2648b2fd-84d1-4ebb-ab1a-ccae0e8d73d6"}],"resourceVersion":"3745730","uid":"c6bbb5bc-95e0-4206-ba2b-a9bad7051bbd"},"spec":{"containers":[{"envFrom":[{"configMapRef":{"name":"django-mysql-conf"}},{"configMapRef":{"name":"redis-conf"}},{"secretRef":{"name":"django-mysql-pass"}}],"image":"image-registry.openshift-image-registry.svc:5000/sample-blog/django:latest","imagePullPolicy":"Always","name":"django","ports":[{"containerPort":8000,"protocol":"TCP"}],"resources":{"limits":{"cpu":"300m","memory":"256Mi"},"requests":{"cpu":"100m","memory":"128Mi"}},"securityContext":{"allowPrivilegeEscalation":false,"capabilities":{"drop":["ALL"]},"runAsNonRoot":true,"runAsUser":1001030000},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File","volumeMounts":[{"mountPath":"/var/run/secrets/kubernetes.io/serviceaccount","name":"kube-api-access-tc9hn","readOnly":true}]}],"dnsPolicy":"ClusterFirst","enableServiceLinks":true,"imagePullSecrets":[{"name":"sample-blog-dockercfg-pj8zb"}],"initContainers":[{"args":["until mysqladmin ping -h $(MYSQL_HOST) -u $(MYSQL_USER) --password=$(MYSQL_PASSWORD) --silent; do\n    echo 'waiting for mysqld to be connectable...'\n    sleep 3\ndone\n"],"command":["sh","-c"],"envFrom":[{"configMapRef":{"name":"django-mysql-conf"}},{"secretRef":{"name":"mysql-pass"}}],"image":"registry.redhat.io/rhel8/mysql-80","imagePullPolicy":"IfNotPresent","name":"init-connection","resources":{"limits":{"cpu":"100m","memory":"128Mi"},"requests":{"cpu":"50m","memory":"64Mi"}},"securityContext":{"allowPrivilegeEscalation":false,"capabilities":{"drop":["ALL"]},"runAsNonRoot":true,"runAsUser":1001030000},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File","volumeMounts":[{"mountPath":"/var/run/secrets/kubernetes.io/serviceaccount","name":"kube-api-access-tc9hn","readOnly":true}]}],"nodeName":"ip-10-0-28-244.ap-northeast-1.compute.internal","preemptionPolicy":"PreemptLowerPriority","priority":0,"restartPolicy":"Always","schedulerName":"default-scheduler","securityContext":{"fsGroup":1001030000,"seLinuxOptions":{"level":"s0:c32,c19"},"seccompProfile":{"type":"RuntimeDefault"}},"serviceAccount":"sample-blog","serviceAccountName":"sample-blog","terminationGracePeriodSeconds":30,"tolerations":[{"effect":"NoExecute","key":"node.kubernetes.io/not-ready","operator":"Exists","tolerationSeconds":300},{"effect":"NoExecute","key":"node.kubernetes.io/unreachable","operator":"Exists","tolerationSeconds":300},{"effect":"NoSchedule","key":"node.kubernetes.io/memory-pressure","operator":"Exists"}],"volumes":[{"name":"kube-api-access-tc9hn","projected":{"defaultMode":420,"sources":[{"serviceAccountToken":{"expirationSeconds":3607,"path":"token"}},{"configMap":{"items":[{"key":"ca.crt","path":"ca.crt"}],"name":"kube-root-ca.crt"}},{"downwardAPI":{"items":[{"fieldRef":{"apiVersion":"v1","fieldPath":"metadata.namespace"},"path":"namespace"}]}},{"configMap":{"items":[{"key":"service-ca.crt","path":"service-ca.crt"}],"name":"openshift-service-ca.crt"}}]}}]},"status":{"conditions":[{"lastProbeTime":null,"lastTransitionTime":"2024-12-11T07:37:57Z","status":"True","type":"PodReadyToStartContainers"},{"lastProbeTime":null,"lastTransitionTime":"2024-12-11T07:38:28Z","status":"True","type":"Initialized"},{"lastProbeTime":null,"lastTransitionTime":"2024-12-11T07:38:53Z","status":"True","type":"Ready"},{"lastProbeTime":null,"lastTransitionTime":"2024-12-11T07:38:53Z","status":"True","type":"ContainersReady"},{"lastProbeTime":null,"lastTransitionTime":"2024-12-11T07:37:54Z","status":"True","type":"PodScheduled"}],"containerStatuses":[{"containerID":"cri-o://28b8037da9a55657577904a40af45817d6b5dabf177b506c988cf33e82bf2590","image":"image-registry.openshift-image-registry.svc:5000/sample-blog/django:latest","imageID":"image-registry.openshift-image-registry.svc:5000/sample-blog/django@sha256:601d3ab9eaa7f19c4c3eec94cda8dafb08829bab97a732342c823d6446bbb173","lastState":{},"name":"django","ready":true,"restartCount":0,"started":true,"state":{"running":{"startedAt":"2024-12-11T07:38:52Z"}}}],"hostIP":"10.0.28.244","hostIPs":[{"ip":"10.0.28.244"}],"initContainerStatuses":[{"containerID":"cri-o://f9eb2a370abae515e528cb8057c21fccc60561b691ce5cafc08cb5e477328dd4","image":"registry.redhat.io/rhel8/mysql-80:latest","imageID":"registry.redhat.io/rhel8/mysql-80@sha256:18b26117161cf143c8b437fc3e5cadad1f65a4583cc9ea5fdf0b7c7b7b6eb81e","lastState":{},"name":"init-connection","ready":true,"restartCount":0,"started":false,"state":{"terminated":{"containerID":"cri-o://f9eb2a370abae515e528cb8057c21fccc60561b691ce5cafc08cb5e477328dd4","exitCode":0,"finishedAt":"2024-12-11T07:38:24Z","reason":"Completed","startedAt":"2024-12-11T07:37:57Z"}}}],"phase":"Running","podIP":"10.131.0.7","podIPs":[{"ip":"10.131.0.7"}],"qosClass":"Burstable","startTime":"2024-12-11T07:37:54Z"}}
+      openshift.io/scc: restricted-v2
+      seccomp.security.alpha.kubernetes.io/pod: runtime/default
+    creationTimestamp: "2024-12-11T07:33:52Z"
+    generateName: django-5c4c6b8b-
+    labels:
+      app: django
+      pod-template-hash: 5c4c6b8b
+    name: django-5c4c6b8b-fkdmh
+    namespace: sample-blog
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: django-5c4c6b8b
+      uid: 2648b2fd-84d1-4ebb-ab1a-ccae0e8d73d6
+    resourceVersion: "3821552"
+    uid: c6bbb5bc-95e0-4206-ba2b-a9bad7051bbd
+  spec:
+    containers:
+    - envFrom:
+      - configMapRef:
+          name: django-mysql-conf
+      - configMapRef:
+          name: redis-conf
+      - secretRef:
+          name: django-mysql-pass
+      image: image-registry.openshift-image-registry.svc:5000/sample-blog/django:latest
+      imagePullPolicy: Always
+      name: django
+      ports:
+      - containerPort: 8000
+        protocol: TCP
+      resources:
+        limits:
+          cpu: 300m
+          memory: 256Mi
+        requests:
+          cpu: 100m
+          memory: 128Mi
+      securityContext:
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop:
+          - ALL
+        runAsNonRoot: true
+        runAsUser: 1001030000
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-tc9hn
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: sample-blog-dockercfg-pj8zb
+    initContainers:
+    - args:
+      - |
+        until mysqladmin ping -h $(MYSQL_HOST) -u $(MYSQL_USER) --password=$(MYSQL_PASSWORD) --silent; do
+            echo 'waiting for mysqld to be connectable...'
+            sleep 3
+        done
+      command:
+      - sh
+      - -c
+      envFrom:
+      - configMapRef:
+          name: django-mysql-conf
+      - secretRef:
+          name: mysql-pass
+      image: registry.redhat.io/rhel8/mysql-80
+      imagePullPolicy: IfNotPresent
+      name: init-connection
+      resources:
+        limits:
+          cpu: 100m
+          memory: 128Mi
+        requests:
+          cpu: 50m
+          memory: 64Mi
+      securityContext:
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop:
+          - ALL
+        runAsNonRoot: true
+        runAsUser: 1001030000
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-tc9hn
+        readOnly: true
+    nodeName: ip-10-0-28-244.ap-northeast-1.compute.internal
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext:
+      fsGroup: 1001030000
+      seLinuxOptions:
+        level: s0:c32,c19
+      seccompProfile:
+        type: RuntimeDefault
+    serviceAccount: sample-blog
+    serviceAccountName: sample-blog
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoSchedule
+      key: node.kubernetes.io/memory-pressure
+      operator: Exists
+    volumes:
+    - name: kube-api-access-tc9hn
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+        - configMap:
+            items:
+            - key: service-ca.crt
+              path: service-ca.crt
+            name: openshift-service-ca.crt
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2024-12-11T07:37:57Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2024-12-11T07:38:28Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2024-12-11T07:38:53Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2024-12-11T07:38:53Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2024-12-11T07:37:54Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: cri-o://28b8037da9a55657577904a40af45817d6b5dabf177b506c988cf33e82bf2590
+      image: image-registry.openshift-image-registry.svc:5000/sample-blog/django:latest
+      imageID: image-registry.openshift-image-registry.svc:5000/sample-blog/django@sha256:601d3ab9eaa7f19c4c3eec94cda8dafb08829bab97a732342c823d6446bbb173
+      lastState: {}
+      name: django
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2024-12-11T07:38:52Z"
+    hostIP: 10.0.28.244
+    hostIPs:
+    - ip: 10.0.28.244
+    initContainerStatuses:
+    - containerID: cri-o://f9eb2a370abae515e528cb8057c21fccc60561b691ce5cafc08cb5e477328dd4
+      image: registry.redhat.io/rhel8/mysql-80:latest
+      imageID: registry.redhat.io/rhel8/mysql-80@sha256:18b26117161cf143c8b437fc3e5cadad1f65a4583cc9ea5fdf0b7c7b7b6eb81e
+      lastState: {}
+      name: init-connection
+      ready: true
+      restartCount: 0
+      started: false
+      state:
+        terminated:
+          containerID: cri-o://f9eb2a370abae515e528cb8057c21fccc60561b691ce5cafc08cb5e477328dd4
+          exitCode: 0
+          finishedAt: "2024-12-11T07:38:24Z"
+          reason: Completed
+          startedAt: "2024-12-11T07:37:57Z"
+    phase: Running
+    podIP: 10.131.0.7
+    podIPs:
+    - ip: 10.131.0.7
+    qosClass: Burstable
+    startTime: "2024-12-11T07:37:54Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      k8s.ovn.org/pod-networks: '{"default":{"ip_addresses":["10.131.0.14/23"],"mac_address":"0a:58:0a:83:00:0e","gateway_ips":["10.131.0.1"],"routes":[{"dest":"10.128.0.0/14","nextHop":"10.131.0.1"},{"dest":"172.30.0.0/16","nextHop":"10.131.0.1"},{"dest":"169.254.0.5/32","nextHop":"10.131.0.1"},{"dest":"100.64.0.0/16","nextHop":"10.131.0.1"}],"ip_address":"10.131.0.14/23","gateway_ip":"10.131.0.1","role":"primary"}}'
+      k8s.v1.cni.cncf.io/network-status: |-
+        [{
+            "name": "ovn-kubernetes",
+            "interface": "eth0",
+            "ips": [
+                "10.131.0.14"
+            ],
+            "mac": "0a:58:0a:83:00:0e",
+            "default": true,
+            "dns": {}
+        }]
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Pod","metadata":{"annotations":{"k8s.ovn.org/pod-networks":"{\"default\":{\"ip_addresses\":[\"10.131.0.14/23\"],\"mac_address\":\"0a:58:0a:83:00:0e\",\"gateway_ips\":[\"10.131.0.1\"],\"routes\":[{\"dest\":\"10.128.0.0/14\",\"nextHop\":\"10.131.0.1\"},{\"dest\":\"172.30.0.0/16\",\"nextHop\":\"10.131.0.1\"},{\"dest\":\"169.254.0.5/32\",\"nextHop\":\"10.131.0.1\"},{\"dest\":\"100.64.0.0/16\",\"nextHop\":\"10.131.0.1\"}],\"ip_address\":\"10.131.0.14/23\",\"gateway_ip\":\"10.131.0.1\",\"role\":\"primary\"}}","k8s.v1.cni.cncf.io/network-status":"[{\n    \"name\": \"ovn-kubernetes\",\n    \"interface\": \"eth0\",\n    \"ips\": [\n        \"10.131.0.14\"\n    ],\n    \"mac\": \"0a:58:0a:83:00:0e\",\n    \"default\": true,\n    \"dns\": {}\n}]","openshift.io/scc":"restricted-v2","seccomp.security.alpha.kubernetes.io/pod":"runtime/default"},"creationTimestamp":"2024-12-11T07:33:56Z","generateName":"mysql-","labels":{"app":"mysql","apps.kubernetes.io/pod-index":"0","controller-revision-hash":"mysql-88c674c4b","statefulset.kubernetes.io/pod-name":"mysql-0"},"name":"mysql-0","namespace":"sample-blog","ownerReferences":[{"apiVersion":"apps/v1","blockOwnerDeletion":true,"controller":true,"kind":"StatefulSet","name":"mysql","uid":"7b031322-4148-45b5-84ad-f2694127f418"}],"resourceVersion":"3745733","uid":"fc297e2d-2058-4f1a-bd1b-9097a646ad61"},"spec":{"containers":[{"envFrom":[{"configMapRef":{"name":"mysql-conf"}},{"secretRef":{"name":"mysql-pass"}}],"image":"registry.redhat.io/rhel8/mysql-80","imagePullPolicy":"IfNotPresent","name":"mysql","ports":[{"containerPort":3306,"protocol":"TCP"}],"resources":{"limits":{"cpu":"300m","memory":"1Gi"},"requests":{"cpu":"100m","memory":"256Mi"}},"securityContext":{"allowPrivilegeEscalation":false,"capabilities":{"drop":["ALL"]},"runAsNonRoot":true,"runAsUser":1001030000},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File","volumeMounts":[{"mountPath":"/var/run/secrets/kubernetes.io/serviceaccount","name":"kube-api-access-68jtz","readOnly":true}]}],"dnsPolicy":"ClusterFirst","enableServiceLinks":true,"hostname":"mysql-0","imagePullSecrets":[{"name":"sample-blog-dockercfg-pj8zb"}],"nodeName":"ip-10-0-28-244.ap-northeast-1.compute.internal","preemptionPolicy":"PreemptLowerPriority","priority":0,"restartPolicy":"Always","schedulerName":"default-scheduler","securityContext":{"fsGroup":1001030000,"seLinuxOptions":{"level":"s0:c32,c19"},"seccompProfile":{"type":"RuntimeDefault"}},"serviceAccount":"sample-blog","serviceAccountName":"sample-blog","subdomain":"mysql","terminationGracePeriodSeconds":30,"tolerations":[{"effect":"NoExecute","key":"node.kubernetes.io/not-ready","operator":"Exists","tolerationSeconds":300},{"effect":"NoExecute","key":"node.kubernetes.io/unreachable","operator":"Exists","tolerationSeconds":300},{"effect":"NoSchedule","key":"node.kubernetes.io/memory-pressure","operator":"Exists"}],"volumes":[{"name":"kube-api-access-68jtz","projected":{"defaultMode":420,"sources":[{"serviceAccountToken":{"expirationSeconds":3607,"path":"token"}},{"configMap":{"items":[{"key":"ca.crt","path":"ca.crt"}],"name":"kube-root-ca.crt"}},{"downwardAPI":{"items":[{"fieldRef":{"apiVersion":"v1","fieldPath":"metadata.namespace"},"path":"namespace"}]}},{"configMap":{"items":[{"key":"service-ca.crt","path":"service-ca.crt"}],"name":"openshift-service-ca.crt"}}]}}]},"status":{"conditions":[{"lastProbeTime":null,"lastTransitionTime":"2024-12-11T07:37:56Z","status":"True","type":"PodReadyToStartContainers"},{"lastProbeTime":null,"lastTransitionTime":"2024-12-11T07:37:54Z","status":"True","type":"Initialized"},{"lastProbeTime":null,"lastTransitionTime":"2024-12-11T07:37:56Z","status":"True","type":"Ready"},{"lastProbeTime":null,"lastTransitionTime":"2024-12-11T07:37:56Z","status":"True","type":"ContainersReady"},{"lastProbeTime":null,"lastTransitionTime":"2024-12-11T07:37:54Z","status":"True","type":"PodScheduled"}],"containerStatuses":[{"containerID":"cri-o://b663d60299b146f1f7e3aa649a1ffc78be978ecbd2d52abd9e9f3bb8a2a477cd","image":"registry.redhat.io/rhel8/mysql-80:latest","imageID":"registry.redhat.io/rhel8/mysql-80@sha256:18b26117161cf143c8b437fc3e5cadad1f65a4583cc9ea5fdf0b7c7b7b6eb81e","lastState":{},"name":"mysql","ready":true,"restartCount":0,"started":true,"state":{"running":{"startedAt":"2024-12-11T07:37:56Z"}}}],"hostIP":"10.0.28.244","hostIPs":[{"ip":"10.0.28.244"}],"phase":"Running","podIP":"10.131.0.14","podIPs":[{"ip":"10.131.0.14"}],"qosClass":"Burstable","startTime":"2024-12-11T07:37:54Z"}}
+      openshift.io/scc: restricted-v2
+      seccomp.security.alpha.kubernetes.io/pod: runtime/default
+    creationTimestamp: "2024-12-11T07:33:56Z"
+    generateName: mysql-
+    labels:
+      app: mysql
+      apps.kubernetes.io/pod-index: "0"
+      controller-revision-hash: mysql-88c674c4b
+      statefulset.kubernetes.io/pod-name: mysql-0
+    name: mysql-0
+    namespace: sample-blog
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: StatefulSet
+      name: mysql
+      uid: 7b031322-4148-45b5-84ad-f2694127f418
+    resourceVersion: "3821556"
+    uid: fc297e2d-2058-4f1a-bd1b-9097a646ad61
+  spec:
+    containers:
+    - envFrom:
+      - configMapRef:
+          name: mysql-conf
+      - secretRef:
+          name: mysql-pass
+      image: registry.redhat.io/rhel8/mysql-80
+      imagePullPolicy: IfNotPresent
+      name: mysql
+      ports:
+      - containerPort: 3306
+        protocol: TCP
+      resources:
+        limits:
+          cpu: 300m
+          memory: 1Gi
+        requests:
+          cpu: 100m
+          memory: 256Mi
+      securityContext:
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop:
+          - ALL
+        runAsNonRoot: true
+        runAsUser: 1001030000
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-68jtz
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    hostname: mysql-0
+    imagePullSecrets:
+    - name: sample-blog-dockercfg-pj8zb
+    nodeName: ip-10-0-28-244.ap-northeast-1.compute.internal
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext:
+      fsGroup: 1001030000
+      seLinuxOptions:
+        level: s0:c32,c19
+      seccompProfile:
+        type: RuntimeDefault
+    serviceAccount: sample-blog
+    serviceAccountName: sample-blog
+    subdomain: mysql
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoSchedule
+      key: node.kubernetes.io/memory-pressure
+      operator: Exists
+    volumes:
+    - name: kube-api-access-68jtz
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+        - configMap:
+            items:
+            - key: service-ca.crt
+              path: service-ca.crt
+            name: openshift-service-ca.crt
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2024-12-11T07:37:56Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2024-12-11T07:37:54Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2024-12-11T07:37:56Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2024-12-11T07:37:56Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2024-12-11T07:37:54Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: cri-o://b663d60299b146f1f7e3aa649a1ffc78be978ecbd2d52abd9e9f3bb8a2a477cd
+      image: registry.redhat.io/rhel8/mysql-80:latest
+      imageID: registry.redhat.io/rhel8/mysql-80@sha256:18b26117161cf143c8b437fc3e5cadad1f65a4583cc9ea5fdf0b7c7b7b6eb81e
+      lastState: {}
+      name: mysql
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2024-12-11T07:37:56Z"
+    hostIP: 10.0.28.244
+    hostIPs:
+    - ip: 10.0.28.244
+    phase: Running
+    podIP: 10.131.0.14
+    podIPs:
+    - ip: 10.131.0.14
+    qosClass: Burstable
+    startTime: "2024-12-11T07:37:54Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      k8s.ovn.org/pod-networks: '{"default":{"ip_addresses":["10.131.0.73/23"],"mac_address":"0a:58:0a:83:00:49","gateway_ips":["10.131.0.1"],"routes":[{"dest":"10.128.0.0/14","nextHop":"10.131.0.1"},{"dest":"172.30.0.0/16","nextHop":"10.131.0.1"},{"dest":"169.254.0.5/32","nextHop":"10.131.0.1"},{"dest":"100.64.0.0/16","nextHop":"10.131.0.1"}],"ip_address":"10.131.0.73/23","gateway_ip":"10.131.0.1","role":"primary"}}'
+      k8s.v1.cni.cncf.io/network-status: |-
+        [{
+            "name": "ovn-kubernetes",
+            "interface": "eth0",
+            "ips": [
+                "10.131.0.73"
+            ],
+            "mac": "0a:58:0a:83:00:49",
+            "default": true,
+            "dns": {}
+        }]
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Pod","metadata":{"annotations":{"k8s.ovn.org/pod-networks":"{\"default\":{\"ip_addresses\":[\"10.131.0.73/23\"],\"mac_address\":\"0a:58:0a:83:00:49\",\"gateway_ips\":[\"10.131.0.1\"],\"routes\":[{\"dest\":\"10.128.0.0/14\",\"nextHop\":\"10.131.0.1\"},{\"dest\":\"172.30.0.0/16\",\"nextHop\":\"10.131.0.1\"},{\"dest\":\"169.254.0.5/32\",\"nextHop\":\"10.131.0.1\"},{\"dest\":\"100.64.0.0/16\",\"nextHop\":\"10.131.0.1\"}],\"ip_address\":\"10.131.0.73/23\",\"gateway_ip\":\"10.131.0.1\",\"role\":\"primary\"}}","k8s.v1.cni.cncf.io/network-status":"[{\n    \"name\": \"ovn-kubernetes\",\n    \"interface\": \"eth0\",\n    \"ips\": [\n        \"10.131.0.73\"\n    ],\n    \"mac\": \"0a:58:0a:83:00:49\",\n    \"default\": true,\n    \"dns\": {}\n}]","openshift.io/build.name":"nginx-1","openshift.io/scc":"splunkforwarder"},"creationTimestamp":"2024-12-12T00:43:12Z","labels":{"openshift.io/build.name":"nginx-1"},"name":"nginx-1-build","namespace":"sample-blog","ownerReferences":[{"apiVersion":"build.openshift.io/v1","controller":true,"kind":"Build","name":"nginx-1","uid":"dac5c968-1a2c-44ed-a468-4226595c604a"}],"resourceVersion":"3745740","uid":"ad5257c5-e5f9-4e94-a22b-3dabb8abec29"},"spec":{"activeDeadlineSeconds":604800,"containers":[{"args":["openshift-docker-build","--v=0"],"env":[{"name":"BUILD","value":"{\"kind\":\"Build\",\"apiVersion\":\"build.openshift.io/v1\",\"metadata\":{\"name\":\"nginx-1\",\"namespace\":\"sample-blog\",\"uid\":\"dac5c968-1a2c-44ed-a468-4226595c604a\",\"resourceVersion\":\"704422\",\"generation\":1,\"creationTimestamp\":\"2024-12-10T00:28:09Z\",\"labels\":{\"build\":\"nginx\",\"buildconfig\":\"nginx\",\"openshift.io/build-config.name\":\"nginx\",\"openshift.io/build.start-policy\":\"Serial\"},\"annotations\":{\"openshift.io/build-config.name\":\"nginx\",\"openshift.io/build.number\":\"1\"},\"ownerReferences\":[{\"apiVersion\":\"build.openshift.io/v1\",\"kind\":\"BuildConfig\",\"name\":\"nginx\",\"uid\":\"597d20ad-bf1e-40b5-8c50-63d48859e30a\",\"controller\":true}],\"managedFields\":[{\"manager\":\"openshift-apiserver\",\"operation\":\"Update\",\"apiVersion\":\"build.openshift.io/v1\",\"time\":\"2024-12-10T00:28:09Z\",\"fieldsType\":\"FieldsV1\",\"fieldsV1\":{\"f:metadata\":{\"f:annotations\":{\".\":{},\"f:openshift.io/build-config.name\":{},\"f:openshift.io/build.number\":{}},\"f:labels\":{\".\":{},\"f:build\":{},\"f:buildconfig\":{},\"f:openshift.io/build-config.name\":{},\"f:openshift.io/build.start-policy\":{}},\"f:ownerReferences\":{\".\":{},\"k:{\\\"uid\\\":\\\"597d20ad-bf1e-40b5-8c50-63d48859e30a\\\"}\":{}}},\"f:spec\":{\"f:output\":{\"f:to\":{}},\"f:revision\":{\".\":{},\"f:git\":{\".\":{},\"f:author\":{\".\":{},\"f:email\":{},\"f:name\":{}},\"f:commit\":{},\"f:committer\":{\".\":{},\"f:email\":{},\"f:name\":{}},\"f:message\":{}},\"f:type\":{}},\"f:serviceAccount\":{},\"f:source\":{\"f:binary\":{},\"f:type\":{}},\"f:strategy\":{\"f:dockerStrategy\":{},\"f:type\":{}}},\"f:status\":{\"f:conditions\":{\".\":{},\"k:{\\\"type\\\":\\\"New\\\"}\":{\".\":{},\"f:lastTransitionTime\":{},\"f:lastUpdateTime\":{},\"f:status\":{},\"f:type\":{}}},\"f:config\":{},\"f:phase\":{}}}}]},\"spec\":{\"serviceAccount\":\"builder\",\"source\":{\"type\":\"Binary\",\"binary\":{}},\"revision\":{\"type\":\"Git\",\"git\":{\"commit\":\"8bd1e9b48692315f2b3320b7ad730fbc6aaceb66\",\"author\":{\"name\":\"skitamura7446\",\"email\":\"46037102+skitamura7446@users.noreply.github.com\"},\"committer\":{\"name\":\"GitHub\",\"email\":\"noreply@github.com\"},\"message\":\"Update README.md\"}},\"strategy\":{\"type\":\"Docker\",\"dockerStrategy\":{\"pullSecret\":{\"name\":\"builder-dockercfg-gq87h\"}}},\"output\":{\"to\":{\"kind\":\"DockerImage\",\"name\":\"image-registry.openshift-image-registry.svc:5000/sample-blog/nginx:latest\"},\"pushSecret\":{\"name\":\"builder-dockercfg-gq87h\"}},\"resources\":{},\"postCommit\":{},\"nodeSelector\":null},\"status\":{\"phase\":\"New\",\"outputDockerImageReference\":\"image-registry.openshift-image-registry.svc:5000/sample-blog/nginx:latest\",\"config\":{\"kind\":\"BuildConfig\",\"namespace\":\"sample-blog\",\"name\":\"nginx\"},\"output\":{},\"conditions\":[{\"type\":\"New\",\"status\":\"True\",\"lastUpdateTime\":\"2024-12-10T00:28:09Z\",\"lastTransitionTime\":\"2024-12-10T00:28:09Z\"}]}}\n"},{"name":"LANG","value":"C.utf8"},{"name":"PUSH_DOCKERCFG_PATH","value":"/var/run/secrets/openshift.io/push"},{"name":"PULL_DOCKERCFG_PATH","value":"/var/run/secrets/openshift.io/pull"},{"name":"BUILD_REGISTRIES_CONF_PATH","value":"/var/run/configs/openshift.io/build-system/registries.conf"},{"name":"BUILD_REGISTRIES_DIR_PATH","value":"/var/run/configs/openshift.io/build-system/registries.d"},{"name":"BUILD_SIGNATURE_POLICY_PATH","value":"/var/run/configs/openshift.io/build-system/policy.json"},{"name":"BUILD_STORAGE_CONF_PATH","value":"/var/run/configs/openshift.io/build-system/storage.conf"},{"name":"BUILD_BLOBCACHE_DIR","value":"/var/cache/blobs"},{"name":"HTTP_PROXY"},{"name":"http_proxy"},{"name":"HTTPS_PROXY"},{"name":"https_proxy"},{"name":"NO_PROXY"},{"name":"no_proxy"}],"image":"quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fde2db2055c6a57aa8492b74e4d4913fbbd30d4bdf449a2a5c4d896d9391e85a","imagePullPolicy":"IfNotPresent","name":"docker-build","resources":{},"securityContext":{"privileged":true,"runAsGroup":0,"runAsUser":0,"seccompProfile":{"type":"Unconfined"}},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"FallbackToLogsOnError","volumeMounts":[{"mountPath":"/var/lib/kubelet/config.json","name":"node-pullsecrets"},{"mountPath":"/tmp/build","name":"buildworkdir"},{"mountPath":"/var/lib/containers/cache","name":"buildcachedir"},{"mountPath":"/var/run/secrets/openshift.io/push","name":"builder-dockercfg-gq87h-push","readOnly":true},{"mountPath":"/var/run/secrets/openshift.io/pull","name":"builder-dockercfg-gq87h-pull","readOnly":true},{"mountPath":"/var/run/configs/openshift.io/build-system","name":"build-system-configs","readOnly":true},{"mountPath":"/var/run/configs/openshift.io/certs","name":"build-ca-bundles"},{"mountPath":"/var/run/configs/openshift.io/pki","name":"build-proxy-ca-bundles"},{"mountPath":"/var/lib/containers","name":"container-storage-root"},{"mountPath":"/var/run/containers","name":"container-storage-run"},{"mountPath":"/var/cache/blobs","name":"build-blob-cache"},{"mountPath":"/var/run/secrets/kubernetes.io/serviceaccount","name":"kube-api-access-lhzm4","readOnly":true}]}],"dnsPolicy":"ClusterFirst","enableServiceLinks":true,"imagePullSecrets":[{"name":"builder-dockercfg-gq87h"}],"initContainers":[{"args":["openshift-git-clone","--v=0"],"env":[{"name":"BUILD","value":"{\"kind\":\"Build\",\"apiVersion\":\"build.openshift.io/v1\",\"metadata\":{\"name\":\"nginx-1\",\"namespace\":\"sample-blog\",\"uid\":\"dac5c968-1a2c-44ed-a468-4226595c604a\",\"resourceVersion\":\"704422\",\"generation\":1,\"creationTimestamp\":\"2024-12-10T00:28:09Z\",\"labels\":{\"build\":\"nginx\",\"buildconfig\":\"nginx\",\"openshift.io/build-config.name\":\"nginx\",\"openshift.io/build.start-policy\":\"Serial\"},\"annotations\":{\"openshift.io/build-config.name\":\"nginx\",\"openshift.io/build.number\":\"1\"},\"ownerReferences\":[{\"apiVersion\":\"build.openshift.io/v1\",\"kind\":\"BuildConfig\",\"name\":\"nginx\",\"uid\":\"597d20ad-bf1e-40b5-8c50-63d48859e30a\",\"controller\":true}],\"managedFields\":[{\"manager\":\"openshift-apiserver\",\"operation\":\"Update\",\"apiVersion\":\"build.openshift.io/v1\",\"time\":\"2024-12-10T00:28:09Z\",\"fieldsType\":\"FieldsV1\",\"fieldsV1\":{\"f:metadata\":{\"f:annotations\":{\".\":{},\"f:openshift.io/build-config.name\":{},\"f:openshift.io/build.number\":{}},\"f:labels\":{\".\":{},\"f:build\":{},\"f:buildconfig\":{},\"f:openshift.io/build-config.name\":{},\"f:openshift.io/build.start-policy\":{}},\"f:ownerReferences\":{\".\":{},\"k:{\\\"uid\\\":\\\"597d20ad-bf1e-40b5-8c50-63d48859e30a\\\"}\":{}}},\"f:spec\":{\"f:output\":{\"f:to\":{}},\"f:revision\":{\".\":{},\"f:git\":{\".\":{},\"f:author\":{\".\":{},\"f:email\":{},\"f:name\":{}},\"f:commit\":{},\"f:committer\":{\".\":{},\"f:email\":{},\"f:name\":{}},\"f:message\":{}},\"f:type\":{}},\"f:serviceAccount\":{},\"f:source\":{\"f:binary\":{},\"f:type\":{}},\"f:strategy\":{\"f:dockerStrategy\":{},\"f:type\":{}}},\"f:status\":{\"f:conditions\":{\".\":{},\"k:{\\\"type\\\":\\\"New\\\"}\":{\".\":{},\"f:lastTransitionTime\":{},\"f:lastUpdateTime\":{},\"f:status\":{},\"f:type\":{}}},\"f:config\":{},\"f:phase\":{}}}}]},\"spec\":{\"serviceAccount\":\"builder\",\"source\":{\"type\":\"Binary\",\"binary\":{}},\"revision\":{\"type\":\"Git\",\"git\":{\"commit\":\"8bd1e9b48692315f2b3320b7ad730fbc6aaceb66\",\"author\":{\"name\":\"skitamura7446\",\"email\":\"46037102+skitamura7446@users.noreply.github.com\"},\"committer\":{\"name\":\"GitHub\",\"email\":\"noreply@github.com\"},\"message\":\"Update README.md\"}},\"strategy\":{\"type\":\"Docker\",\"dockerStrategy\":{\"pullSecret\":{\"name\":\"builder-dockercfg-gq87h\"}}},\"output\":{\"to\":{\"kind\":\"DockerImage\",\"name\":\"image-registry.openshift-image-registry.svc:5000/sample-blog/nginx:latest\"},\"pushSecret\":{\"name\":\"builder-dockercfg-gq87h\"}},\"resources\":{},\"postCommit\":{},\"nodeSelector\":null},\"status\":{\"phase\":\"New\",\"outputDockerImageReference\":\"image-registry.openshift-image-registry.svc:5000/sample-blog/nginx:latest\",\"config\":{\"kind\":\"BuildConfig\",\"namespace\":\"sample-blog\",\"name\":\"nginx\"},\"output\":{},\"conditions\":[{\"type\":\"New\",\"status\":\"True\",\"lastUpdateTime\":\"2024-12-10T00:28:09Z\",\"lastTransitionTime\":\"2024-12-10T00:28:09Z\"}]}}\n"},{"name":"LANG","value":"C.utf8"},{"name":"BUILD_REGISTRIES_CONF_PATH","value":"/var/run/configs/openshift.io/build-system/registries.conf"},{"name":"BUILD_REGISTRIES_DIR_PATH","value":"/var/run/configs/openshift.io/build-system/registries.d"},{"name":"BUILD_SIGNATURE_POLICY_PATH","value":"/var/run/configs/openshift.io/build-system/policy.json"},{"name":"BUILD_STORAGE_CONF_PATH","value":"/var/run/configs/openshift.io/build-system/storage.conf"},{"name":"BUILD_BLOBCACHE_DIR","value":"/var/cache/blobs"},{"name":"HTTP_PROXY"},{"name":"http_proxy"},{"name":"HTTPS_PROXY"},{"name":"https_proxy"},{"name":"NO_PROXY"},{"name":"no_proxy"}],"image":"quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fde2db2055c6a57aa8492b74e4d4913fbbd30d4bdf449a2a5c4d896d9391e85a","imagePullPolicy":"IfNotPresent","name":"git-clone","resources":{},"securityContext":{"capabilities":{"add":["CHOWN","DAC_OVERRIDE"],"drop":["ALL"]},"privileged":false,"runAsGroup":0,"runAsNonRoot":false,"runAsUser":0,"seccompProfile":{"type":"RuntimeDefault"}},"stdin":true,"stdinOnce":true,"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"FallbackToLogsOnError","volumeMounts":[{"mountPath":"/tmp/build","name":"buildworkdir"},{"mountPath":"/var/run/configs/openshift.io/build-system","name":"build-system-configs","readOnly":true},{"mountPath":"/var/run/configs/openshift.io/certs","name":"build-ca-bundles"},{"mountPath":"/var/run/configs/openshift.io/pki","name":"build-proxy-ca-bundles"},{"mountPath":"/var/cache/blobs","name":"build-blob-cache"},{"mountPath":"/var/run/secrets/kubernetes.io/serviceaccount","name":"kube-api-access-lhzm4","readOnly":true}]},{"args":["openshift-manage-dockerfile","--v=0"],"env":[{"name":"BUILD","value":"{\"kind\":\"Build\",\"apiVersion\":\"build.openshift.io/v1\",\"metadata\":{\"name\":\"nginx-1\",\"namespace\":\"sample-blog\",\"uid\":\"dac5c968-1a2c-44ed-a468-4226595c604a\",\"resourceVersion\":\"704422\",\"generation\":1,\"creationTimestamp\":\"2024-12-10T00:28:09Z\",\"labels\":{\"build\":\"nginx\",\"buildconfig\":\"nginx\",\"openshift.io/build-config.name\":\"nginx\",\"openshift.io/build.start-policy\":\"Serial\"},\"annotations\":{\"openshift.io/build-config.name\":\"nginx\",\"openshift.io/build.number\":\"1\"},\"ownerReferences\":[{\"apiVersion\":\"build.openshift.io/v1\",\"kind\":\"BuildConfig\",\"name\":\"nginx\",\"uid\":\"597d20ad-bf1e-40b5-8c50-63d48859e30a\",\"controller\":true}],\"managedFields\":[{\"manager\":\"openshift-apiserver\",\"operation\":\"Update\",\"apiVersion\":\"build.openshift.io/v1\",\"time\":\"2024-12-10T00:28:09Z\",\"fieldsType\":\"FieldsV1\",\"fieldsV1\":{\"f:metadata\":{\"f:annotations\":{\".\":{},\"f:openshift.io/build-config.name\":{},\"f:openshift.io/build.number\":{}},\"f:labels\":{\".\":{},\"f:build\":{},\"f:buildconfig\":{},\"f:openshift.io/build-config.name\":{},\"f:openshift.io/build.start-policy\":{}},\"f:ownerReferences\":{\".\":{},\"k:{\\\"uid\\\":\\\"597d20ad-bf1e-40b5-8c50-63d48859e30a\\\"}\":{}}},\"f:spec\":{\"f:output\":{\"f:to\":{}},\"f:revision\":{\".\":{},\"f:git\":{\".\":{},\"f:author\":{\".\":{},\"f:email\":{},\"f:name\":{}},\"f:commit\":{},\"f:committer\":{\".\":{},\"f:email\":{},\"f:name\":{}},\"f:message\":{}},\"f:type\":{}},\"f:serviceAccount\":{},\"f:source\":{\"f:binary\":{},\"f:type\":{}},\"f:strategy\":{\"f:dockerStrategy\":{},\"f:type\":{}}},\"f:status\":{\"f:conditions\":{\".\":{},\"k:{\\\"type\\\":\\\"New\\\"}\":{\".\":{},\"f:lastTransitionTime\":{},\"f:lastUpdateTime\":{},\"f:status\":{},\"f:type\":{}}},\"f:config\":{},\"f:phase\":{}}}}]},\"spec\":{\"serviceAccount\":\"builder\",\"source\":{\"type\":\"Binary\",\"binary\":{}},\"revision\":{\"type\":\"Git\",\"git\":{\"commit\":\"8bd1e9b48692315f2b3320b7ad730fbc6aaceb66\",\"author\":{\"name\":\"skitamura7446\",\"email\":\"46037102+skitamura7446@users.noreply.github.com\"},\"committer\":{\"name\":\"GitHub\",\"email\":\"noreply@github.com\"},\"message\":\"Update README.md\"}},\"strategy\":{\"type\":\"Docker\",\"dockerStrategy\":{\"pullSecret\":{\"name\":\"builder-dockercfg-gq87h\"}}},\"output\":{\"to\":{\"kind\":\"DockerImage\",\"name\":\"image-registry.openshift-image-registry.svc:5000/sample-blog/nginx:latest\"},\"pushSecret\":{\"name\":\"builder-dockercfg-gq87h\"}},\"resources\":{},\"postCommit\":{},\"nodeSelector\":null},\"status\":{\"phase\":\"New\",\"outputDockerImageReference\":\"image-registry.openshift-image-registry.svc:5000/sample-blog/nginx:latest\",\"config\":{\"kind\":\"BuildConfig\",\"namespace\":\"sample-blog\",\"name\":\"nginx\"},\"output\":{},\"conditions\":[{\"type\":\"New\",\"status\":\"True\",\"lastUpdateTime\":\"2024-12-10T00:28:09Z\",\"lastTransitionTime\":\"2024-12-10T00:28:09Z\"}]}}\n"},{"name":"LANG","value":"C.utf8"},{"name":"BUILD_REGISTRIES_CONF_PATH","value":"/var/run/configs/openshift.io/build-system/registries.conf"},{"name":"BUILD_REGISTRIES_DIR_PATH","value":"/var/run/configs/openshift.io/build-system/registries.d"},{"name":"BUILD_SIGNATURE_POLICY_PATH","value":"/var/run/configs/openshift.io/build-system/policy.json"},{"name":"BUILD_STORAGE_CONF_PATH","value":"/var/run/configs/openshift.io/build-system/storage.conf"},{"name":"BUILD_BLOBCACHE_DIR","value":"/var/cache/blobs"},{"name":"HTTP_PROXY"},{"name":"http_proxy"},{"name":"HTTPS_PROXY"},{"name":"https_proxy"},{"name":"NO_PROXY"},{"name":"no_proxy"}],"image":"quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fde2db2055c6a57aa8492b74e4d4913fbbd30d4bdf449a2a5c4d896d9391e85a","imagePullPolicy":"IfNotPresent","name":"manage-dockerfile","resources":{},"securityContext":{"capabilities":{"add":["CHOWN","DAC_OVERRIDE"],"drop":["ALL"]},"privileged":false,"runAsGroup":0,"runAsNonRoot":false,"runAsUser":0,"seccompProfile":{"type":"RuntimeDefault"}},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"FallbackToLogsOnError","volumeMounts":[{"mountPath":"/tmp/build","name":"buildworkdir"},{"mountPath":"/var/run/configs/openshift.io/build-system","name":"build-system-configs","readOnly":true},{"mountPath":"/var/run/configs/openshift.io/certs","name":"build-ca-bundles"},{"mountPath":"/var/run/configs/openshift.io/pki","name":"build-proxy-ca-bundles"},{"mountPath":"/var/cache/blobs","name":"build-blob-cache"},{"mountPath":"/var/run/secrets/kubernetes.io/serviceaccount","name":"kube-api-access-lhzm4","readOnly":true}]}],"nodeName":"ip-10-0-28-244.ap-northeast-1.compute.internal","nodeSelector":{"kubernetes.io/os":"linux"},"preemptionPolicy":"PreemptLowerPriority","priority":0,"restartPolicy":"Never","schedulerName":"default-scheduler","securityContext":{},"serviceAccount":"builder","serviceAccountName":"builder","terminationGracePeriodSeconds":30,"tolerations":[{"effect":"NoExecute","key":"node.kubernetes.io/not-ready","operator":"Exists","tolerationSeconds":300},{"effect":"NoExecute","key":"node.kubernetes.io/unreachable","operator":"Exists","tolerationSeconds":300}],"volumes":[{"hostPath":{"path":"/var/lib/containers/cache","type":""},"name":"buildcachedir"},{"emptyDir":{},"name":"buildworkdir"},{"hostPath":{"path":"/var/lib/kubelet/config.json","type":"File"},"name":"node-pullsecrets"},{"name":"builder-dockercfg-gq87h-push","secret":{"defaultMode":384,"secretName":"builder-dockercfg-gq87h"}},{"name":"builder-dockercfg-gq87h-pull","secret":{"defaultMode":384,"secretName":"builder-dockercfg-gq87h"}},{"configMap":{"defaultMode":420,"name":"nginx-1-sys-config"},"name":"build-system-configs"},{"configMap":{"defaultMode":420,"items":[{"key":"service-ca.crt","path":"certs.d/image-registry.openshift-image-registry.svc:5000/ca.crt"}],"name":"nginx-1-ca"},"name":"build-ca-bundles"},{"configMap":{"defaultMode":420,"items":[{"key":"ca-bundle.crt","path":"tls-ca-bundle.pem"}],"name":"nginx-1-global-ca"},"name":"build-proxy-ca-bundles"},{"emptyDir":{},"name":"container-storage-root"},{"emptyDir":{},"name":"container-storage-run"},{"emptyDir":{},"name":"build-blob-cache"},{"name":"kube-api-access-lhzm4","projected":{"defaultMode":420,"sources":[{"serviceAccountToken":{"expirationSeconds":3607,"path":"token"}},{"configMap":{"items":[{"key":"ca.crt","path":"ca.crt"}],"name":"kube-root-ca.crt"}},{"downwardAPI":{"items":[{"fieldRef":{"apiVersion":"v1","fieldPath":"metadata.namespace"},"path":"namespace"}]}},{"configMap":{"items":[{"key":"service-ca.crt","path":"service-ca.crt"}],"name":"openshift-service-ca.crt"}}]}}]},"status":{"conditions":[{"lastProbeTime":null,"lastTransitionTime":"2024-12-12T00:43:12Z","status":"False","type":"PodReadyToStartContainers"},{"lastProbeTime":null,"lastTransitionTime":"2024-12-12T00:43:12Z","message":"containers with incomplete status: [git-clone manage-dockerfile]","reason":"ContainersNotInitialized","status":"False","type":"Initialized"},{"lastProbeTime":null,"lastTransitionTime":"2024-12-12T00:43:12Z","message":"containers with unready status: [docker-build]","reason":"ContainersNotReady","status":"False","type":"Ready"},{"lastProbeTime":null,"lastTransitionTime":"2024-12-12T00:43:12Z","message":"containers with unready status: [docker-build]","reason":"ContainersNotReady","status":"False","type":"ContainersReady"},{"lastProbeTime":null,"lastTransitionTime":"2024-12-12T00:43:12Z","status":"True","type":"PodScheduled"}],"containerStatuses":[{"image":"quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fde2db2055c6a57aa8492b74e4d4913fbbd30d4bdf449a2a5c4d896d9391e85a","imageID":"","lastState":{},"name":"docker-build","ready":false,"restartCount":0,"started":false,"state":{"waiting":{"reason":"PodInitializing"}}}],"hostIP":"10.0.28.244","hostIPs":[{"ip":"10.0.28.244"}],"initContainerStatuses":[{"image":"quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fde2db2055c6a57aa8492b74e4d4913fbbd30d4bdf449a2a5c4d896d9391e85a","imageID":"","lastState":{},"name":"git-clone","ready":false,"restartCount":0,"started":false,"state":{"waiting":{"reason":"PodInitializing"}}},{"image":"quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fde2db2055c6a57aa8492b74e4d4913fbbd30d4bdf449a2a5c4d896d9391e85a","imageID":"","lastState":{},"name":"manage-dockerfile","ready":false,"restartCount":0,"started":false,"state":{"waiting":{"reason":"PodInitializing"}}}],"phase":"Pending","qosClass":"BestEffort","startTime":"2024-12-12T00:43:12Z"}}
+      openshift.io/build.name: nginx-1
+      openshift.io/scc: splunkforwarder
+    creationTimestamp: "2024-12-12T00:43:12Z"
+    labels:
+      openshift.io/build.name: nginx-1
+    name: nginx-1-build
+    namespace: sample-blog
+    ownerReferences:
+    - apiVersion: build.openshift.io/v1
+      controller: true
+      kind: Build
+      name: nginx-1
+      uid: dac5c968-1a2c-44ed-a468-4226595c604a
+    resourceVersion: "3821562"
+    uid: ad5257c5-e5f9-4e94-a22b-3dabb8abec29
+  spec:
+    activeDeadlineSeconds: 604800
+    containers:
+    - args:
+      - openshift-docker-build
+      - --v=0
+      env:
+      - name: BUILD
+        value: |
+          {"kind":"Build","apiVersion":"build.openshift.io/v1","metadata":{"name":"nginx-1","namespace":"sample-blog","uid":"dac5c968-1a2c-44ed-a468-4226595c604a","resourceVersion":"704422","generation":1,"creationTimestamp":"2024-12-10T00:28:09Z","labels":{"build":"nginx","buildconfig":"nginx","openshift.io/build-config.name":"nginx","openshift.io/build.start-policy":"Serial"},"annotations":{"openshift.io/build-config.name":"nginx","openshift.io/build.number":"1"},"ownerReferences":[{"apiVersion":"build.openshift.io/v1","kind":"BuildConfig","name":"nginx","uid":"597d20ad-bf1e-40b5-8c50-63d48859e30a","controller":true}],"managedFields":[{"manager":"openshift-apiserver","operation":"Update","apiVersion":"build.openshift.io/v1","time":"2024-12-10T00:28:09Z","fieldsType":"FieldsV1","fieldsV1":{"f:metadata":{"f:annotations":{".":{},"f:openshift.io/build-config.name":{},"f:openshift.io/build.number":{}},"f:labels":{".":{},"f:build":{},"f:buildconfig":{},"f:openshift.io/build-config.name":{},"f:openshift.io/build.start-policy":{}},"f:ownerReferences":{".":{},"k:{\"uid\":\"597d20ad-bf1e-40b5-8c50-63d48859e30a\"}":{}}},"f:spec":{"f:output":{"f:to":{}},"f:revision":{".":{},"f:git":{".":{},"f:author":{".":{},"f:email":{},"f:name":{}},"f:commit":{},"f:committer":{".":{},"f:email":{},"f:name":{}},"f:message":{}},"f:type":{}},"f:serviceAccount":{},"f:source":{"f:binary":{},"f:type":{}},"f:strategy":{"f:dockerStrategy":{},"f:type":{}}},"f:status":{"f:conditions":{".":{},"k:{\"type\":\"New\"}":{".":{},"f:lastTransitionTime":{},"f:lastUpdateTime":{},"f:status":{},"f:type":{}}},"f:config":{},"f:phase":{}}}}]},"spec":{"serviceAccount":"builder","source":{"type":"Binary","binary":{}},"revision":{"type":"Git","git":{"commit":"8bd1e9b48692315f2b3320b7ad730fbc6aaceb66","author":{"name":"skitamura7446","email":"46037102+skitamura7446@users.noreply.github.com"},"committer":{"name":"GitHub","email":"noreply@github.com"},"message":"Update README.md"}},"strategy":{"type":"Docker","dockerStrategy":{"pullSecret":{"name":"builder-dockercfg-gq87h"}}},"output":{"to":{"kind":"DockerImage","name":"image-registry.openshift-image-registry.svc:5000/sample-blog/nginx:latest"},"pushSecret":{"name":"builder-dockercfg-gq87h"}},"resources":{},"postCommit":{},"nodeSelector":null},"status":{"phase":"New","outputDockerImageReference":"image-registry.openshift-image-registry.svc:5000/sample-blog/nginx:latest","config":{"kind":"BuildConfig","namespace":"sample-blog","name":"nginx"},"output":{},"conditions":[{"type":"New","status":"True","lastUpdateTime":"2024-12-10T00:28:09Z","lastTransitionTime":"2024-12-10T00:28:09Z"}]}}
+      - name: LANG
+        value: C.utf8
+      - name: PUSH_DOCKERCFG_PATH
+        value: /var/run/secrets/openshift.io/push
+      - name: PULL_DOCKERCFG_PATH
+        value: /var/run/secrets/openshift.io/pull
+      - name: BUILD_REGISTRIES_CONF_PATH
+        value: /var/run/configs/openshift.io/build-system/registries.conf
+      - name: BUILD_REGISTRIES_DIR_PATH
+        value: /var/run/configs/openshift.io/build-system/registries.d
+      - name: BUILD_SIGNATURE_POLICY_PATH
+        value: /var/run/configs/openshift.io/build-system/policy.json
+      - name: BUILD_STORAGE_CONF_PATH
+        value: /var/run/configs/openshift.io/build-system/storage.conf
+      - name: BUILD_BLOBCACHE_DIR
+        value: /var/cache/blobs
+      - name: HTTP_PROXY
+      - name: http_proxy
+      - name: HTTPS_PROXY
+      - name: https_proxy
+      - name: NO_PROXY
+      - name: no_proxy
+      image: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fde2db2055c6a57aa8492b74e4d4913fbbd30d4bdf449a2a5c4d896d9391e85a
+      imagePullPolicy: IfNotPresent
+      name: docker-build
+      resources: {}
+      securityContext:
+        privileged: true
+        runAsGroup: 0
+        runAsUser: 0
+        seccompProfile:
+          type: Unconfined
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: FallbackToLogsOnError
+      volumeMounts:
+      - mountPath: /var/lib/kubelet/config.json
+        name: node-pullsecrets
+      - mountPath: /tmp/build
+        name: buildworkdir
+      - mountPath: /var/lib/containers/cache
+        name: buildcachedir
+      - mountPath: /var/run/secrets/openshift.io/push
+        name: builder-dockercfg-gq87h-push
+        readOnly: true
+      - mountPath: /var/run/secrets/openshift.io/pull
+        name: builder-dockercfg-gq87h-pull
+        readOnly: true
+      - mountPath: /var/run/configs/openshift.io/build-system
+        name: build-system-configs
+        readOnly: true
+      - mountPath: /var/run/configs/openshift.io/certs
+        name: build-ca-bundles
+      - mountPath: /var/run/configs/openshift.io/pki
+        name: build-proxy-ca-bundles
+      - mountPath: /var/lib/containers
+        name: container-storage-root
+      - mountPath: /var/run/containers
+        name: container-storage-run
+      - mountPath: /var/cache/blobs
+        name: build-blob-cache
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-lhzm4
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: builder-dockercfg-gq87h
+    initContainers:
+    - args:
+      - openshift-git-clone
+      - --v=0
+      env:
+      - name: BUILD
+        value: |
+          {"kind":"Build","apiVersion":"build.openshift.io/v1","metadata":{"name":"nginx-1","namespace":"sample-blog","uid":"dac5c968-1a2c-44ed-a468-4226595c604a","resourceVersion":"704422","generation":1,"creationTimestamp":"2024-12-10T00:28:09Z","labels":{"build":"nginx","buildconfig":"nginx","openshift.io/build-config.name":"nginx","openshift.io/build.start-policy":"Serial"},"annotations":{"openshift.io/build-config.name":"nginx","openshift.io/build.number":"1"},"ownerReferences":[{"apiVersion":"build.openshift.io/v1","kind":"BuildConfig","name":"nginx","uid":"597d20ad-bf1e-40b5-8c50-63d48859e30a","controller":true}],"managedFields":[{"manager":"openshift-apiserver","operation":"Update","apiVersion":"build.openshift.io/v1","time":"2024-12-10T00:28:09Z","fieldsType":"FieldsV1","fieldsV1":{"f:metadata":{"f:annotations":{".":{},"f:openshift.io/build-config.name":{},"f:openshift.io/build.number":{}},"f:labels":{".":{},"f:build":{},"f:buildconfig":{},"f:openshift.io/build-config.name":{},"f:openshift.io/build.start-policy":{}},"f:ownerReferences":{".":{},"k:{\"uid\":\"597d20ad-bf1e-40b5-8c50-63d48859e30a\"}":{}}},"f:spec":{"f:output":{"f:to":{}},"f:revision":{".":{},"f:git":{".":{},"f:author":{".":{},"f:email":{},"f:name":{}},"f:commit":{},"f:committer":{".":{},"f:email":{},"f:name":{}},"f:message":{}},"f:type":{}},"f:serviceAccount":{},"f:source":{"f:binary":{},"f:type":{}},"f:strategy":{"f:dockerStrategy":{},"f:type":{}}},"f:status":{"f:conditions":{".":{},"k:{\"type\":\"New\"}":{".":{},"f:lastTransitionTime":{},"f:lastUpdateTime":{},"f:status":{},"f:type":{}}},"f:config":{},"f:phase":{}}}}]},"spec":{"serviceAccount":"builder","source":{"type":"Binary","binary":{}},"revision":{"type":"Git","git":{"commit":"8bd1e9b48692315f2b3320b7ad730fbc6aaceb66","author":{"name":"skitamura7446","email":"46037102+skitamura7446@users.noreply.github.com"},"committer":{"name":"GitHub","email":"noreply@github.com"},"message":"Update README.md"}},"strategy":{"type":"Docker","dockerStrategy":{"pullSecret":{"name":"builder-dockercfg-gq87h"}}},"output":{"to":{"kind":"DockerImage","name":"image-registry.openshift-image-registry.svc:5000/sample-blog/nginx:latest"},"pushSecret":{"name":"builder-dockercfg-gq87h"}},"resources":{},"postCommit":{},"nodeSelector":null},"status":{"phase":"New","outputDockerImageReference":"image-registry.openshift-image-registry.svc:5000/sample-blog/nginx:latest","config":{"kind":"BuildConfig","namespace":"sample-blog","name":"nginx"},"output":{},"conditions":[{"type":"New","status":"True","lastUpdateTime":"2024-12-10T00:28:09Z","lastTransitionTime":"2024-12-10T00:28:09Z"}]}}
+      - name: LANG
+        value: C.utf8
+      - name: BUILD_REGISTRIES_CONF_PATH
+        value: /var/run/configs/openshift.io/build-system/registries.conf
+      - name: BUILD_REGISTRIES_DIR_PATH
+        value: /var/run/configs/openshift.io/build-system/registries.d
+      - name: BUILD_SIGNATURE_POLICY_PATH
+        value: /var/run/configs/openshift.io/build-system/policy.json
+      - name: BUILD_STORAGE_CONF_PATH
+        value: /var/run/configs/openshift.io/build-system/storage.conf
+      - name: BUILD_BLOBCACHE_DIR
+        value: /var/cache/blobs
+      - name: HTTP_PROXY
+      - name: http_proxy
+      - name: HTTPS_PROXY
+      - name: https_proxy
+      - name: NO_PROXY
+      - name: no_proxy
+      image: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fde2db2055c6a57aa8492b74e4d4913fbbd30d4bdf449a2a5c4d896d9391e85a
+      imagePullPolicy: IfNotPresent
+      name: git-clone
+      resources: {}
+      securityContext:
+        capabilities:
+          add:
+          - CHOWN
+          - DAC_OVERRIDE
+          drop:
+          - ALL
+        privileged: false
+        runAsGroup: 0
+        runAsNonRoot: false
+        runAsUser: 0
+        seccompProfile:
+          type: RuntimeDefault
+      stdin: true
+      stdinOnce: true
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: FallbackToLogsOnError
+      volumeMounts:
+      - mountPath: /tmp/build
+        name: buildworkdir
+      - mountPath: /var/run/configs/openshift.io/build-system
+        name: build-system-configs
+        readOnly: true
+      - mountPath: /var/run/configs/openshift.io/certs
+        name: build-ca-bundles
+      - mountPath: /var/run/configs/openshift.io/pki
+        name: build-proxy-ca-bundles
+      - mountPath: /var/cache/blobs
+        name: build-blob-cache
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-lhzm4
+        readOnly: true
+    - args:
+      - openshift-manage-dockerfile
+      - --v=0
+      env:
+      - name: BUILD
+        value: |
+          {"kind":"Build","apiVersion":"build.openshift.io/v1","metadata":{"name":"nginx-1","namespace":"sample-blog","uid":"dac5c968-1a2c-44ed-a468-4226595c604a","resourceVersion":"704422","generation":1,"creationTimestamp":"2024-12-10T00:28:09Z","labels":{"build":"nginx","buildconfig":"nginx","openshift.io/build-config.name":"nginx","openshift.io/build.start-policy":"Serial"},"annotations":{"openshift.io/build-config.name":"nginx","openshift.io/build.number":"1"},"ownerReferences":[{"apiVersion":"build.openshift.io/v1","kind":"BuildConfig","name":"nginx","uid":"597d20ad-bf1e-40b5-8c50-63d48859e30a","controller":true}],"managedFields":[{"manager":"openshift-apiserver","operation":"Update","apiVersion":"build.openshift.io/v1","time":"2024-12-10T00:28:09Z","fieldsType":"FieldsV1","fieldsV1":{"f:metadata":{"f:annotations":{".":{},"f:openshift.io/build-config.name":{},"f:openshift.io/build.number":{}},"f:labels":{".":{},"f:build":{},"f:buildconfig":{},"f:openshift.io/build-config.name":{},"f:openshift.io/build.start-policy":{}},"f:ownerReferences":{".":{},"k:{\"uid\":\"597d20ad-bf1e-40b5-8c50-63d48859e30a\"}":{}}},"f:spec":{"f:output":{"f:to":{}},"f:revision":{".":{},"f:git":{".":{},"f:author":{".":{},"f:email":{},"f:name":{}},"f:commit":{},"f:committer":{".":{},"f:email":{},"f:name":{}},"f:message":{}},"f:type":{}},"f:serviceAccount":{},"f:source":{"f:binary":{},"f:type":{}},"f:strategy":{"f:dockerStrategy":{},"f:type":{}}},"f:status":{"f:conditions":{".":{},"k:{\"type\":\"New\"}":{".":{},"f:lastTransitionTime":{},"f:lastUpdateTime":{},"f:status":{},"f:type":{}}},"f:config":{},"f:phase":{}}}}]},"spec":{"serviceAccount":"builder","source":{"type":"Binary","binary":{}},"revision":{"type":"Git","git":{"commit":"8bd1e9b48692315f2b3320b7ad730fbc6aaceb66","author":{"name":"skitamura7446","email":"46037102+skitamura7446@users.noreply.github.com"},"committer":{"name":"GitHub","email":"noreply@github.com"},"message":"Update README.md"}},"strategy":{"type":"Docker","dockerStrategy":{"pullSecret":{"name":"builder-dockercfg-gq87h"}}},"output":{"to":{"kind":"DockerImage","name":"image-registry.openshift-image-registry.svc:5000/sample-blog/nginx:latest"},"pushSecret":{"name":"builder-dockercfg-gq87h"}},"resources":{},"postCommit":{},"nodeSelector":null},"status":{"phase":"New","outputDockerImageReference":"image-registry.openshift-image-registry.svc:5000/sample-blog/nginx:latest","config":{"kind":"BuildConfig","namespace":"sample-blog","name":"nginx"},"output":{},"conditions":[{"type":"New","status":"True","lastUpdateTime":"2024-12-10T00:28:09Z","lastTransitionTime":"2024-12-10T00:28:09Z"}]}}
+      - name: LANG
+        value: C.utf8
+      - name: BUILD_REGISTRIES_CONF_PATH
+        value: /var/run/configs/openshift.io/build-system/registries.conf
+      - name: BUILD_REGISTRIES_DIR_PATH
+        value: /var/run/configs/openshift.io/build-system/registries.d
+      - name: BUILD_SIGNATURE_POLICY_PATH
+        value: /var/run/configs/openshift.io/build-system/policy.json
+      - name: BUILD_STORAGE_CONF_PATH
+        value: /var/run/configs/openshift.io/build-system/storage.conf
+      - name: BUILD_BLOBCACHE_DIR
+        value: /var/cache/blobs
+      - name: HTTP_PROXY
+      - name: http_proxy
+      - name: HTTPS_PROXY
+      - name: https_proxy
+      - name: NO_PROXY
+      - name: no_proxy
+      image: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fde2db2055c6a57aa8492b74e4d4913fbbd30d4bdf449a2a5c4d896d9391e85a
+      imagePullPolicy: IfNotPresent
+      name: manage-dockerfile
+      resources: {}
+      securityContext:
+        capabilities:
+          add:
+          - CHOWN
+          - DAC_OVERRIDE
+          drop:
+          - ALL
+        privileged: false
+        runAsGroup: 0
+        runAsNonRoot: false
+        runAsUser: 0
+        seccompProfile:
+          type: RuntimeDefault
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: FallbackToLogsOnError
+      volumeMounts:
+      - mountPath: /tmp/build
+        name: buildworkdir
+      - mountPath: /var/run/configs/openshift.io/build-system
+        name: build-system-configs
+        readOnly: true
+      - mountPath: /var/run/configs/openshift.io/certs
+        name: build-ca-bundles
+      - mountPath: /var/run/configs/openshift.io/pki
+        name: build-proxy-ca-bundles
+      - mountPath: /var/cache/blobs
+        name: build-blob-cache
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-lhzm4
+        readOnly: true
+    nodeName: ip-10-0-28-244.ap-northeast-1.compute.internal
+    nodeSelector:
+      kubernetes.io/os: linux
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Never
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: builder
+    serviceAccountName: builder
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - hostPath:
+        path: /var/lib/containers/cache
+        type: ""
+      name: buildcachedir
+    - emptyDir: {}
+      name: buildworkdir
+    - hostPath:
+        path: /var/lib/kubelet/config.json
+        type: File
+      name: node-pullsecrets
+    - name: builder-dockercfg-gq87h-push
+      secret:
+        defaultMode: 384
+        secretName: builder-dockercfg-gq87h
+    - name: builder-dockercfg-gq87h-pull
+      secret:
+        defaultMode: 384
+        secretName: builder-dockercfg-gq87h
+    - configMap:
+        defaultMode: 420
+        name: nginx-1-sys-config
+      name: build-system-configs
+    - configMap:
+        defaultMode: 420
+        items:
+        - key: service-ca.crt
+          path: certs.d/image-registry.openshift-image-registry.svc:5000/ca.crt
+        name: nginx-1-ca
+      name: build-ca-bundles
+    - configMap:
+        defaultMode: 420
+        items:
+        - key: ca-bundle.crt
+          path: tls-ca-bundle.pem
+        name: nginx-1-global-ca
+      name: build-proxy-ca-bundles
+    - emptyDir: {}
+      name: container-storage-root
+    - emptyDir: {}
+      name: container-storage-run
+    - emptyDir: {}
+      name: build-blob-cache
+    - name: kube-api-access-lhzm4
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+        - configMap:
+            items:
+            - key: service-ca.crt
+              path: service-ca.crt
+            name: openshift-service-ca.crt
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2024-12-12T00:43:12Z"
+      status: "False"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2024-12-12T00:43:12Z"
+      message: 'containers with incomplete status: [git-clone manage-dockerfile]'
+      reason: ContainersNotInitialized
+      status: "False"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2024-12-12T00:43:12Z"
+      message: 'containers with unready status: [docker-build]'
+      reason: ContainersNotReady
+      status: "False"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2024-12-12T00:43:12Z"
+      message: 'containers with unready status: [docker-build]'
+      reason: ContainersNotReady
+      status: "False"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2024-12-12T00:43:12Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - image: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fde2db2055c6a57aa8492b74e4d4913fbbd30d4bdf449a2a5c4d896d9391e85a
+      imageID: ""
+      lastState: {}
+      name: docker-build
+      ready: false
+      restartCount: 0
+      started: false
+      state:
+        waiting:
+          reason: PodInitializing
+    hostIP: 10.0.28.244
+    hostIPs:
+    - ip: 10.0.28.244
+    initContainerStatuses:
+    - image: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fde2db2055c6a57aa8492b74e4d4913fbbd30d4bdf449a2a5c4d896d9391e85a
+      imageID: ""
+      lastState: {}
+      name: git-clone
+      ready: false
+      restartCount: 0
+      started: false
+      state:
+        waiting:
+          reason: PodInitializing
+    - image: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:fde2db2055c6a57aa8492b74e4d4913fbbd30d4bdf449a2a5c4d896d9391e85a
+      imageID: ""
+      lastState: {}
+      name: manage-dockerfile
+      ready: false
+      restartCount: 0
+      started: false
+      state:
+        waiting:
+          reason: PodInitializing
+    phase: Pending
+    qosClass: BestEffort
+    startTime: "2024-12-12T00:43:12Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      k8s.ovn.org/pod-networks: '{"default":{"ip_addresses":["10.128.2.58/23"],"mac_address":"0a:58:0a:80:02:3a","gateway_ips":["10.128.2.1"],"routes":[{"dest":"10.128.0.0/14","nextHop":"10.128.2.1"},{"dest":"172.30.0.0/16","nextHop":"10.128.2.1"},{"dest":"169.254.0.5/32","nextHop":"10.128.2.1"},{"dest":"100.64.0.0/16","nextHop":"10.128.2.1"}],"ip_address":"10.128.2.58/23","gateway_ip":"10.128.2.1","role":"primary"}}'
+      k8s.v1.cni.cncf.io/network-status: |-
+        [{
+            "name": "ovn-kubernetes",
+            "interface": "eth0",
+            "ips": [
+                "10.128.2.58"
+            ],
+            "mac": "0a:58:0a:80:02:3a",
+            "default": true,
+            "dns": {}
+        }]
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Pod","metadata":{"annotations":{"k8s.ovn.org/pod-networks":"{\"default\":{\"ip_addresses\":[\"10.128.2.58/23\"],\"mac_address\":\"0a:58:0a:80:02:3a\",\"gateway_ips\":[\"10.128.2.1\"],\"routes\":[{\"dest\":\"10.128.0.0/14\",\"nextHop\":\"10.128.2.1\"},{\"dest\":\"172.30.0.0/16\",\"nextHop\":\"10.128.2.1\"},{\"dest\":\"169.254.0.5/32\",\"nextHop\":\"10.128.2.1\"},{\"dest\":\"100.64.0.0/16\",\"nextHop\":\"10.128.2.1\"}],\"ip_address\":\"10.128.2.58/23\",\"gateway_ip\":\"10.128.2.1\",\"role\":\"primary\"}}","k8s.v1.cni.cncf.io/network-status":"[{\n    \"name\": \"ovn-kubernetes\",\n    \"interface\": \"eth0\",\n    \"ips\": [\n        \"10.128.2.58\"\n    ],\n    \"mac\": \"0a:58:0a:80:02:3a\",\n    \"default\": true,\n    \"dns\": {}\n}]","openshift.io/scc":"restricted-v2","seccomp.security.alpha.kubernetes.io/pod":"runtime/default"},"creationTimestamp":"2024-12-11T08:29:33Z","generateName":"nginx-8675f47f6b-","labels":{"app":"nginx","pod-template-hash":"8675f47f6b"},"name":"nginx-8675f47f6b-q2s9z","namespace":"sample-blog","ownerReferences":[{"apiVersion":"apps/v1","blockOwnerDeletion":true,"controller":true,"kind":"ReplicaSet","name":"nginx-8675f47f6b","uid":"124f5e4d-82dd-4e78-8795-bdff48b11f58"}],"resourceVersion":"3745743","uid":"d92660dc-0fca-4921-8cfe-e54e1d640b33"},"spec":{"containers":[{"image":"image-registry.openshift-image-registry.svc:5000/sample-blog/nginx:latest","imagePullPolicy":"Always","name":"nginx","ports":[{"containerPort":8080,"protocol":"TCP"}],"resources":{"limits":{"cpu":"100m","memory":"128Mi"},"requests":{"cpu":"50m","memory":"64Mi"}},"securityContext":{"allowPrivilegeEscalation":false,"capabilities":{"drop":["ALL"]},"runAsNonRoot":true,"runAsUser":1001030000},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File","volumeMounts":[{"mountPath":"/var/run/secrets/kubernetes.io/serviceaccount","name":"kube-api-access-hgm84","readOnly":true}]}],"dnsPolicy":"ClusterFirst","enableServiceLinks":true,"imagePullSecrets":[{"name":"sample-blog-dockercfg-pj8zb"}],"nodeName":"ip-10-0-22-55.ap-northeast-1.compute.internal","preemptionPolicy":"PreemptLowerPriority","priority":0,"restartPolicy":"Always","schedulerName":"default-scheduler","securityContext":{"fsGroup":1001030000,"seLinuxOptions":{"level":"s0:c32,c19"},"seccompProfile":{"type":"RuntimeDefault"}},"serviceAccount":"sample-blog","serviceAccountName":"sample-blog","terminationGracePeriodSeconds":30,"tolerations":[{"effect":"NoExecute","key":"node.kubernetes.io/not-ready","operator":"Exists","tolerationSeconds":300},{"effect":"NoExecute","key":"node.kubernetes.io/unreachable","operator":"Exists","tolerationSeconds":300},{"effect":"NoSchedule","key":"node.kubernetes.io/memory-pressure","operator":"Exists"}],"volumes":[{"name":"kube-api-access-hgm84","projected":{"defaultMode":420,"sources":[{"serviceAccountToken":{"expirationSeconds":3607,"path":"token"}},{"configMap":{"items":[{"key":"ca.crt","path":"ca.crt"}],"name":"kube-root-ca.crt"}},{"downwardAPI":{"items":[{"fieldRef":{"apiVersion":"v1","fieldPath":"metadata.namespace"},"path":"namespace"}]}},{"configMap":{"items":[{"key":"service-ca.crt","path":"service-ca.crt"}],"name":"openshift-service-ca.crt"}}]}}]},"status":{"conditions":[{"lastProbeTime":null,"lastTransitionTime":"2024-12-11T08:29:34Z","status":"True","type":"PodReadyToStartContainers"},{"lastProbeTime":null,"lastTransitionTime":"2024-12-11T08:29:33Z","status":"True","type":"Initialized"},{"lastProbeTime":null,"lastTransitionTime":"2024-12-11T08:29:34Z","status":"True","type":"Ready"},{"lastProbeTime":null,"lastTransitionTime":"2024-12-11T08:29:34Z","status":"True","type":"ContainersReady"},{"lastProbeTime":null,"lastTransitionTime":"2024-12-11T08:29:33Z","status":"True","type":"PodScheduled"}],"containerStatuses":[{"containerID":"cri-o://ba881395241cc2f7992a14843499abbf52482c29741b302d2e2808ec1dd8ad70","image":"image-registry.openshift-image-registry.svc:5000/sample-blog/nginx:latest","imageID":"image-registry.openshift-image-registry.svc:5000/sample-blog/nginx@sha256:591b4942afce4d3d699c8891c1fbcb4560dd2684d6406a2832829b11162165f0","lastState":{},"name":"nginx","ready":true,"restartCount":0,"started":true,"state":{"running":{"startedAt":"2024-12-11T08:29:34Z"}}}],"hostIP":"10.0.22.55","hostIPs":[{"ip":"10.0.22.55"}],"phase":"Running","podIP":"10.128.2.58","podIPs":[{"ip":"10.128.2.58"}],"qosClass":"Burstable","startTime":"2024-12-11T08:29:33Z"}}
+      openshift.io/scc: restricted-v2
+      seccomp.security.alpha.kubernetes.io/pod: runtime/default
+    creationTimestamp: "2024-12-11T08:29:33Z"
+    generateName: nginx-8675f47f6b-
+    labels:
+      app: nginx
+      pod-template-hash: 8675f47f6b
+    name: nginx-8675f47f6b-q2s9z
+    namespace: sample-blog
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: nginx-8675f47f6b
+      uid: 124f5e4d-82dd-4e78-8795-bdff48b11f58
+    resourceVersion: "3821567"
+    uid: d92660dc-0fca-4921-8cfe-e54e1d640b33
+  spec:
+    containers:
+    - image: image-registry.openshift-image-registry.svc:5000/sample-blog/nginx:latest
+      imagePullPolicy: Always
+      name: nginx
+      ports:
+      - containerPort: 8080
+        protocol: TCP
+      resources:
+        limits:
+          cpu: 100m
+          memory: 128Mi
+        requests:
+          cpu: 50m
+          memory: 64Mi
+      securityContext:
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop:
+          - ALL
+        runAsNonRoot: true
+        runAsUser: 1001030000
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-hgm84
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: sample-blog-dockercfg-pj8zb
+    nodeName: ip-10-0-22-55.ap-northeast-1.compute.internal
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext:
+      fsGroup: 1001030000
+      seLinuxOptions:
+        level: s0:c32,c19
+      seccompProfile:
+        type: RuntimeDefault
+    serviceAccount: sample-blog
+    serviceAccountName: sample-blog
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoSchedule
+      key: node.kubernetes.io/memory-pressure
+      operator: Exists
+    volumes:
+    - name: kube-api-access-hgm84
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+        - configMap:
+            items:
+            - key: service-ca.crt
+              path: service-ca.crt
+            name: openshift-service-ca.crt
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2024-12-11T08:29:34Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2024-12-11T08:29:33Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2024-12-11T08:29:34Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2024-12-11T08:29:34Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2024-12-11T08:29:33Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: cri-o://ba881395241cc2f7992a14843499abbf52482c29741b302d2e2808ec1dd8ad70
+      image: image-registry.openshift-image-registry.svc:5000/sample-blog/nginx:latest
+      imageID: image-registry.openshift-image-registry.svc:5000/sample-blog/nginx@sha256:591b4942afce4d3d699c8891c1fbcb4560dd2684d6406a2832829b11162165f0
+      lastState: {}
+      name: nginx
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2024-12-11T08:29:34Z"
+    hostIP: 10.0.22.55
+    hostIPs:
+    - ip: 10.0.22.55
+    phase: Running
+    podIP: 10.128.2.58
+    podIPs:
+    - ip: 10.128.2.58
+    qosClass: Burstable
+    startTime: "2024-12-11T08:29:33Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      k8s.ovn.org/pod-networks: '{"default":{"ip_addresses":["10.128.2.20/23"],"mac_address":"0a:58:0a:80:02:14","gateway_ips":["10.128.2.1"],"routes":[{"dest":"10.128.0.0/14","nextHop":"10.128.2.1"},{"dest":"172.30.0.0/16","nextHop":"10.128.2.1"},{"dest":"169.254.0.5/32","nextHop":"10.128.2.1"},{"dest":"100.64.0.0/16","nextHop":"10.128.2.1"}],"ip_address":"10.128.2.20/23","gateway_ip":"10.128.2.1","role":"primary"}}'
+      k8s.v1.cni.cncf.io/network-status: |-
+        [{
+            "name": "ovn-kubernetes",
+            "interface": "eth0",
+            "ips": [
+                "10.128.2.20"
+            ],
+            "mac": "0a:58:0a:80:02:14",
+            "default": true,
+            "dns": {}
+        }]
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Pod","metadata":{"annotations":{"k8s.ovn.org/pod-networks":"{\"default\":{\"ip_addresses\":[\"10.128.2.20/23\"],\"mac_address\":\"0a:58:0a:80:02:14\",\"gateway_ips\":[\"10.128.2.1\"],\"routes\":[{\"dest\":\"10.128.0.0/14\",\"nextHop\":\"10.128.2.1\"},{\"dest\":\"172.30.0.0/16\",\"nextHop\":\"10.128.2.1\"},{\"dest\":\"169.254.0.5/32\",\"nextHop\":\"10.128.2.1\"},{\"dest\":\"100.64.0.0/16\",\"nextHop\":\"10.128.2.1\"}],\"ip_address\":\"10.128.2.20/23\",\"gateway_ip\":\"10.128.2.1\",\"role\":\"primary\"}}","k8s.v1.cni.cncf.io/network-status":"[{\n    \"name\": \"ovn-kubernetes\",\n    \"interface\": \"eth0\",\n    \"ips\": [\n        \"10.128.2.20\"\n    ],\n    \"mac\": \"0a:58:0a:80:02:14\",\n    \"default\": true,\n    \"dns\": {}\n}]","openshift.io/scc":"restricted-v2","seccomp.security.alpha.kubernetes.io/pod":"runtime/default"},"creationTimestamp":"2024-12-11T07:38:15Z","generateName":"redis-","labels":{"app":"redis","apps.kubernetes.io/pod-index":"0","controller-revision-hash":"redis-598b876897","statefulset.kubernetes.io/pod-name":"redis-0"},"name":"redis-0","namespace":"sample-blog","ownerReferences":[{"apiVersion":"apps/v1","blockOwnerDeletion":true,"controller":true,"kind":"StatefulSet","name":"redis","uid":"64284d09-cdd7-41cf-967b-3b91e6bc5238"}],"resourceVersion":"3745746","uid":"3731d3cb-bd03-4893-9c90-fe9b4b676282"},"spec":{"containers":[{"image":"registry.redhat.io/rhel8/redis-6","imagePullPolicy":"IfNotPresent","name":"redis","ports":[{"containerPort":6379,"protocol":"TCP"}],"resources":{"limits":{"cpu":"200m","memory":"256Mi"},"requests":{"cpu":"100m","memory":"128Mi"}},"securityContext":{"allowPrivilegeEscalation":false,"capabilities":{"drop":["ALL"]},"runAsNonRoot":true,"runAsUser":1001030000},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File","volumeMounts":[{"mountPath":"/data","name":"data"},{"mountPath":"/var/run/secrets/kubernetes.io/serviceaccount","name":"kube-api-access-df9gs","readOnly":true}]}],"dnsPolicy":"ClusterFirst","enableServiceLinks":true,"hostname":"redis-0","imagePullSecrets":[{"name":"sample-blog-dockercfg-pj8zb"}],"nodeName":"ip-10-0-22-55.ap-northeast-1.compute.internal","preemptionPolicy":"PreemptLowerPriority","priority":0,"restartPolicy":"Always","schedulerName":"default-scheduler","securityContext":{"fsGroup":1001030000,"seLinuxOptions":{"level":"s0:c32,c19"},"seccompProfile":{"type":"RuntimeDefault"}},"serviceAccount":"sample-blog","serviceAccountName":"sample-blog","subdomain":"redis","terminationGracePeriodSeconds":30,"tolerations":[{"effect":"NoExecute","key":"node.kubernetes.io/not-ready","operator":"Exists","tolerationSeconds":300},{"effect":"NoExecute","key":"node.kubernetes.io/unreachable","operator":"Exists","tolerationSeconds":300},{"effect":"NoSchedule","key":"node.kubernetes.io/memory-pressure","operator":"Exists"}],"volumes":[{"emptyDir":{},"name":"data"},{"name":"kube-api-access-df9gs","projected":{"defaultMode":420,"sources":[{"serviceAccountToken":{"expirationSeconds":3607,"path":"token"}},{"configMap":{"items":[{"key":"ca.crt","path":"ca.crt"}],"name":"kube-root-ca.crt"}},{"downwardAPI":{"items":[{"fieldRef":{"apiVersion":"v1","fieldPath":"metadata.namespace"},"path":"namespace"}]}},{"configMap":{"items":[{"key":"service-ca.crt","path":"service-ca.crt"}],"name":"openshift-service-ca.crt"}}]}}]},"status":{"conditions":[{"lastProbeTime":null,"lastTransitionTime":"2024-12-11T07:43:07Z","status":"True","type":"PodReadyToStartContainers"},{"lastProbeTime":null,"lastTransitionTime":"2024-12-11T07:43:03Z","status":"True","type":"Initialized"},{"lastProbeTime":null,"lastTransitionTime":"2024-12-11T07:43:07Z","status":"True","type":"Ready"},{"lastProbeTime":null,"lastTransitionTime":"2024-12-11T07:43:07Z","status":"True","type":"ContainersReady"},{"lastProbeTime":null,"lastTransitionTime":"2024-12-11T07:43:03Z","status":"True","type":"PodScheduled"}],"containerStatuses":[{"containerID":"cri-o://58c6f62b03358d66da46049dff71cb9fa17171169f8762ead739d9b748c8759d","image":"registry.redhat.io/rhel8/redis-6:latest","imageID":"registry.redhat.io/rhel8/redis-6@sha256:404eb18b54c078edc46d39a0d441ef0da8b8fabcc862fbeff032ee8ccbe6ec84","lastState":{},"name":"redis","ready":true,"restartCount":0,"started":true,"state":{"running":{"startedAt":"2024-12-11T07:43:05Z"}}}],"hostIP":"10.0.22.55","hostIPs":[{"ip":"10.0.22.55"}],"phase":"Running","podIP":"10.128.2.20","podIPs":[{"ip":"10.128.2.20"}],"qosClass":"Burstable","startTime":"2024-12-11T07:43:03Z"}}
+      openshift.io/scc: restricted-v2
+      seccomp.security.alpha.kubernetes.io/pod: runtime/default
+    creationTimestamp: "2024-12-11T07:38:15Z"
+    generateName: redis-
+    labels:
+      app: redis
+      apps.kubernetes.io/pod-index: "0"
+      controller-revision-hash: redis-598b876897
+      statefulset.kubernetes.io/pod-name: redis-0
+    name: redis-0
+    namespace: sample-blog
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: StatefulSet
+      name: redis
+      uid: 64284d09-cdd7-41cf-967b-3b91e6bc5238
+    resourceVersion: "3821570"
+    uid: 3731d3cb-bd03-4893-9c90-fe9b4b676282
+  spec:
+    containers:
+    - image: registry.redhat.io/rhel8/redis-6
+      imagePullPolicy: IfNotPresent
+      name: redis
+      ports:
+      - containerPort: 6379
+        protocol: TCP
+      resources:
+        limits:
+          cpu: 200m
+          memory: 256Mi
+        requests:
+          cpu: 100m
+          memory: 128Mi
+      securityContext:
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop:
+          - ALL
+        runAsNonRoot: true
+        runAsUser: 1001030000
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /data
+        name: data
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-df9gs
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    hostname: redis-0
+    imagePullSecrets:
+    - name: sample-blog-dockercfg-pj8zb
+    nodeName: ip-10-0-22-55.ap-northeast-1.compute.internal
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext:
+      fsGroup: 1001030000
+      seLinuxOptions:
+        level: s0:c32,c19
+      seccompProfile:
+        type: RuntimeDefault
+    serviceAccount: sample-blog
+    serviceAccountName: sample-blog
+    subdomain: redis
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoSchedule
+      key: node.kubernetes.io/memory-pressure
+      operator: Exists
+    volumes:
+    - emptyDir: {}
+      name: data
+    - name: kube-api-access-df9gs
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+        - configMap:
+            items:
+            - key: service-ca.crt
+              path: service-ca.crt
+            name: openshift-service-ca.crt
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2024-12-11T07:43:07Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2024-12-11T07:43:03Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2024-12-11T07:43:07Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2024-12-11T07:43:07Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2024-12-11T07:43:03Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: cri-o://58c6f62b03358d66da46049dff71cb9fa17171169f8762ead739d9b748c8759d
+      image: registry.redhat.io/rhel8/redis-6:latest
+      imageID: registry.redhat.io/rhel8/redis-6@sha256:404eb18b54c078edc46d39a0d441ef0da8b8fabcc862fbeff032ee8ccbe6ec84
+      lastState: {}
+      name: redis
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2024-12-11T07:43:05Z"
+    hostIP: 10.0.22.55
+    hostIPs:
+    - ip: 10.0.22.55
+    phase: Running
+    podIP: 10.128.2.20
+    podIPs:
+    - ip: 10.128.2.20
+    qosClass: Burstable
+    startTime: "2024-12-11T07:43:03Z"
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"creationTimestamp":"2024-12-10T00:46:23Z","labels":{"app":"sample-blog"},"name":"django","namespace":"sample-blog","resourceVersion":"3680039","uid":"7c1334b0-97b2-4403-bdc0-d6be4474fc6e"},"spec":{"clusterIP":"172.30.128.196","clusterIPs":["172.30.128.196"],"internalTrafficPolicy":"Cluster","ipFamilies":["IPv4"],"ipFamilyPolicy":"SingleStack","ports":[{"port":8000,"protocol":"TCP","targetPort":8000}],"selector":{"app":"django"},"sessionAffinity":"None","type":"ClusterIP"},"status":{"loadBalancer":{}}}
+    creationTimestamp: "2024-12-10T00:46:23Z"
+    labels:
+      app: sample-blog
+    name: django
+    namespace: sample-blog
+    resourceVersion: "3821572"
+    uid: 7c1334b0-97b2-4403-bdc0-d6be4474fc6e
+  spec:
+    clusterIP: 172.30.128.196
+    clusterIPs:
+    - 172.30.128.196
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - port: 8000
+      protocol: TCP
+      targetPort: 8000
+    selector:
+      app: django
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"creationTimestamp":"2024-12-10T00:46:23Z","labels":{"app":"sample-blog"},"name":"mysql","namespace":"sample-blog","resourceVersion":"3680047","uid":"98d0c7e6-46a5-42e2-8ddc-a23ccbf9c287"},"spec":{"clusterIP":"172.30.33.207","clusterIPs":["172.30.33.207"],"internalTrafficPolicy":"Cluster","ipFamilies":["IPv4"],"ipFamilyPolicy":"SingleStack","ports":[{"port":3306,"protocol":"TCP","targetPort":3306}],"selector":{"app":"mysql"},"sessionAffinity":"None","type":"ClusterIP"},"status":{"loadBalancer":{}}}
+    creationTimestamp: "2024-12-10T00:46:23Z"
+    labels:
+      app: sample-blog
+    name: mysql
+    namespace: sample-blog
+    resourceVersion: "3821575"
+    uid: 98d0c7e6-46a5-42e2-8ddc-a23ccbf9c287
+  spec:
+    clusterIP: 172.30.33.207
+    clusterIPs:
+    - 172.30.33.207
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - port: 3306
+      protocol: TCP
+      targetPort: 3306
+    selector:
+      app: mysql
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"creationTimestamp":"2024-12-10T00:46:23Z","labels":{"app":"sample-blog"},"name":"nginx","namespace":"sample-blog","resourceVersion":"3680052","uid":"b626cc1b-44f9-43ac-9e1c-3b0d5719b7a5"},"spec":{"clusterIP":"172.30.51.51","clusterIPs":["172.30.51.51"],"internalTrafficPolicy":"Cluster","ipFamilies":["IPv4"],"ipFamilyPolicy":"SingleStack","ports":[{"port":80,"protocol":"TCP","targetPort":8080}],"selector":{"app":"nginx"},"sessionAffinity":"None","type":"ClusterIP"},"status":{"loadBalancer":{}}}
+    creationTimestamp: "2024-12-10T00:46:23Z"
+    labels:
+      app: sample-blog
+    name: nginx
+    namespace: sample-blog
+    resourceVersion: "3821577"
+    uid: b626cc1b-44f9-43ac-9e1c-3b0d5719b7a5
+  spec:
+    clusterIP: 172.30.51.51
+    clusterIPs:
+    - 172.30.51.51
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 8080
+    selector:
+      app: nginx
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"creationTimestamp":"2024-12-10T00:46:23Z","labels":{"app":"sample-blog"},"name":"redis","namespace":"sample-blog","resourceVersion":"3680054","uid":"18a160bb-328e-401c-912c-80e7df3490f9"},"spec":{"clusterIP":"172.30.201.62","clusterIPs":["172.30.201.62"],"internalTrafficPolicy":"Cluster","ipFamilies":["IPv4"],"ipFamilyPolicy":"SingleStack","ports":[{"port":6379,"protocol":"TCP","targetPort":6379}],"selector":{"app":"redis"},"sessionAffinity":"None","type":"ClusterIP"},"status":{"loadBalancer":{}}}
+    creationTimestamp: "2024-12-10T00:46:23Z"
+    labels:
+      app: sample-blog
+    name: redis
+    namespace: sample-blog
+    resourceVersion: "3821580"
+    uid: 18a160bb-328e-401c-912c-80e7df3490f9
+  spec:
+    clusterIP: 172.30.201.62
+    clusterIPs:
+    - 172.30.201.62
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - port: 6379
+      protocol: TCP
+      targetPort: 6379
+    selector:
+      app: redis
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      app.openshift.io/connects-to: '["mysql", "redis"]'
+      deployment.kubernetes.io/revision: "1"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{"app.openshift.io/connects-to":"[\"mysql\", \"redis\"]","deployment.kubernetes.io/revision":"1"},"creationTimestamp":"2024-12-10T00:46:23Z","generation":1,"labels":{"app":"sample-blog","app.kubernetes.io/part-of":"sample-blog"},"name":"django","namespace":"sample-blog","resourceVersion":"3813702","uid":"e1fe7765-520d-40f9-823c-d76aa5c68bba"},"spec":{"progressDeadlineSeconds":600,"replicas":1,"revisionHistoryLimit":10,"selector":{"matchLabels":{"app":"django"}},"strategy":{"rollingUpdate":{"maxSurge":"25%","maxUnavailable":"25%"},"type":"RollingUpdate"},"template":{"metadata":{"creationTimestamp":null,"labels":{"app":"django"}},"spec":{"containers":[{"envFrom":[{"configMapRef":{"name":"django-mysql-conf"}},{"configMapRef":{"name":"redis-conf"}},{"secretRef":{"name":"django-mysql-pass"}}],"image":"image-registry.openshift-image-registry.svc:5000/sample-blog/django:latest","imagePullPolicy":"Always","name":"django","ports":[{"containerPort":8000,"protocol":"TCP"}],"resources":{"limits":{"cpu":"300m","memory":"256Mi"},"requests":{"cpu":"100m","memory":"128Mi"}},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File"}],"dnsPolicy":"ClusterFirst","initContainers":[{"args":["until mysqladmin ping -h $(MYSQL_HOST) -u $(MYSQL_USER) --password=$(MYSQL_PASSWORD) --silent; do\n    echo 'waiting for mysqld to be connectable...'\n    sleep 3\ndone\n"],"command":["sh","-c"],"envFrom":[{"configMapRef":{"name":"django-mysql-conf"}},{"secretRef":{"name":"mysql-pass"}}],"image":"registry.redhat.io/rhel8/mysql-80","imagePullPolicy":"IfNotPresent","name":"init-connection","resources":{"limits":{"cpu":"100m","memory":"128Mi"},"requests":{"cpu":"50m","memory":"64Mi"}},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File"}],"restartPolicy":"Always","schedulerName":"default-scheduler","securityContext":{},"serviceAccount":"sample-blog","serviceAccountName":"sample-blog","terminationGracePeriodSeconds":30}}},"status":{"availableReplicas":1,"conditions":[{"lastTransitionTime":"2024-12-10T00:46:23Z","lastUpdateTime":"2024-12-10T00:47:09Z","message":"ReplicaSet \"django-5c4c6b8b\" has successfully progressed.","reason":"NewReplicaSetAvailable","status":"True","type":"Progressing"},{"lastTransitionTime":"2024-12-11T07:38:53Z","lastUpdateTime":"2024-12-11T07:38:53Z","message":"Deployment has minimum availability.","reason":"MinimumReplicasAvailable","status":"True","type":"Available"}],"observedGeneration":1,"readyReplicas":1,"replicas":1,"updatedReplicas":1}}
+    creationTimestamp: "2024-12-10T00:46:23Z"
+    generation: 2
+    labels:
+      app: sample-blog
+      app.kubernetes.io/part-of: sample-blog
+    name: django
+    namespace: sample-blog
+    resourceVersion: "3821592"
+    uid: e1fe7765-520d-40f9-823c-d76aa5c68bba
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: django
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: django
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: django-mysql-conf
+          - configMapRef:
+              name: redis-conf
+          - secretRef:
+              name: django-mysql-pass
+          image: image-registry.openshift-image-registry.svc:5000/sample-blog/django:latest
+          imagePullPolicy: Always
+          name: django
+          ports:
+          - containerPort: 8000
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 300m
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        initContainers:
+        - args:
+          - |
+            until mysqladmin ping -h $(MYSQL_HOST) -u $(MYSQL_USER) --password=$(MYSQL_PASSWORD) --silent; do
+                echo 'waiting for mysqld to be connectable...'
+                sleep 3
+            done
+          command:
+          - sh
+          - -c
+          envFrom:
+          - configMapRef:
+              name: django-mysql-conf
+          - secretRef:
+              name: mysql-pass
+          image: registry.redhat.io/rhel8/mysql-80
+          imagePullPolicy: IfNotPresent
+          name: init-connection
+          resources:
+            limits:
+              cpu: 100m
+              memory: 128Mi
+            requests:
+              cpu: 50m
+              memory: 64Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        serviceAccount: sample-blog
+        serviceAccountName: sample-blog
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2024-12-10T00:46:23Z"
+      lastUpdateTime: "2024-12-10T00:47:09Z"
+      message: ReplicaSet "django-5c4c6b8b" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    - lastTransitionTime: "2024-12-11T07:38:53Z"
+      lastUpdateTime: "2024-12-11T07:38:53Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    observedGeneration: 2
+    readyReplicas: 1
+    replicas: 1
+    updatedReplicas: 1
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      app.openshift.io/connects-to: django
+      deployment.kubernetes.io/revision: "1"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{"app.openshift.io/connects-to":"django","deployment.kubernetes.io/revision":"1"},"creationTimestamp":"2024-12-10T00:46:23Z","generation":1,"labels":{"app":"sample-blog","app.kubernetes.io/part-of":"sample-blog"},"name":"nginx","namespace":"sample-blog","resourceVersion":"3813911","uid":"37edbc53-2338-484d-be02-31a2dc61b932"},"spec":{"progressDeadlineSeconds":600,"replicas":1,"revisionHistoryLimit":10,"selector":{"matchLabels":{"app":"nginx"}},"strategy":{"rollingUpdate":{"maxSurge":"25%","maxUnavailable":"25%"},"type":"RollingUpdate"},"template":{"metadata":{"creationTimestamp":null,"labels":{"app":"nginx"}},"spec":{"containers":[{"image":"image-registry.openshift-image-registry.svc:5000/sample-blog/nginx:latest","imagePullPolicy":"Always","name":"nginx","ports":[{"containerPort":8080,"protocol":"TCP"}],"resources":{"limits":{"cpu":"100m","memory":"128Mi"},"requests":{"cpu":"50m","memory":"64Mi"}},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File"}],"dnsPolicy":"ClusterFirst","restartPolicy":"Always","schedulerName":"default-scheduler","securityContext":{},"serviceAccount":"sample-blog","serviceAccountName":"sample-blog","terminationGracePeriodSeconds":30}}},"status":{"availableReplicas":1,"conditions":[{"lastTransitionTime":"2024-12-10T00:46:23Z","lastUpdateTime":"2024-12-10T00:46:31Z","message":"ReplicaSet \"nginx-8675f47f6b\" has successfully progressed.","reason":"NewReplicaSetAvailable","status":"True","type":"Progressing"},{"lastTransitionTime":"2024-12-11T08:29:34Z","lastUpdateTime":"2024-12-11T08:29:34Z","message":"Deployment has minimum availability.","reason":"MinimumReplicasAvailable","status":"True","type":"Available"}],"observedGeneration":1,"readyReplicas":1,"replicas":1,"updatedReplicas":1}}
+    creationTimestamp: "2024-12-10T00:46:23Z"
+    generation: 2
+    labels:
+      app: sample-blog
+      app.kubernetes.io/part-of: sample-blog
+    name: nginx
+    namespace: sample-blog
+    resourceVersion: "3821594"
+    uid: 37edbc53-2338-484d-be02-31a2dc61b932
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: nginx
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: nginx
+      spec:
+        containers:
+        - image: image-registry.openshift-image-registry.svc:5000/sample-blog/nginx:latest
+          imagePullPolicy: Always
+          name: nginx
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 100m
+              memory: 128Mi
+            requests:
+              cpu: 50m
+              memory: 64Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        serviceAccount: sample-blog
+        serviceAccountName: sample-blog
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2024-12-10T00:46:23Z"
+      lastUpdateTime: "2024-12-10T00:46:31Z"
+      message: ReplicaSet "nginx-8675f47f6b" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    - lastTransitionTime: "2024-12-11T08:29:34Z"
+      lastUpdateTime: "2024-12-11T08:29:34Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    observedGeneration: 2
+    readyReplicas: 1
+    replicas: 1
+    updatedReplicas: 1
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      app.openshift.io/connects-to: '["mysql", "redis"]'
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "1"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"ReplicaSet","metadata":{"annotations":{"app.openshift.io/connects-to":"[\"mysql\", \"redis\"]","deployment.kubernetes.io/desired-replicas":"1","deployment.kubernetes.io/max-replicas":"2","deployment.kubernetes.io/revision":"1"},"creationTimestamp":"2024-12-10T00:46:23Z","generation":1,"labels":{"app":"django","pod-template-hash":"5c4c6b8b"},"name":"django-5c4c6b8b","namespace":"sample-blog","ownerReferences":[{"apiVersion":"apps/v1","blockOwnerDeletion":true,"controller":true,"kind":"Deployment","name":"django","uid":"e1fe7765-520d-40f9-823c-d76aa5c68bba"}],"resourceVersion":"3813699","uid":"2648b2fd-84d1-4ebb-ab1a-ccae0e8d73d6"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"django","pod-template-hash":"5c4c6b8b"}},"template":{"metadata":{"creationTimestamp":null,"labels":{"app":"django","pod-template-hash":"5c4c6b8b"}},"spec":{"containers":[{"envFrom":[{"configMapRef":{"name":"django-mysql-conf"}},{"configMapRef":{"name":"redis-conf"}},{"secretRef":{"name":"django-mysql-pass"}}],"image":"image-registry.openshift-image-registry.svc:5000/sample-blog/django:latest","imagePullPolicy":"Always","name":"django","ports":[{"containerPort":8000,"protocol":"TCP"}],"resources":{"limits":{"cpu":"300m","memory":"256Mi"},"requests":{"cpu":"100m","memory":"128Mi"}},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File"}],"dnsPolicy":"ClusterFirst","initContainers":[{"args":["until mysqladmin ping -h $(MYSQL_HOST) -u $(MYSQL_USER) --password=$(MYSQL_PASSWORD) --silent; do\n    echo 'waiting for mysqld to be connectable...'\n    sleep 3\ndone\n"],"command":["sh","-c"],"envFrom":[{"configMapRef":{"name":"django-mysql-conf"}},{"secretRef":{"name":"mysql-pass"}}],"image":"registry.redhat.io/rhel8/mysql-80","imagePullPolicy":"IfNotPresent","name":"init-connection","resources":{"limits":{"cpu":"100m","memory":"128Mi"},"requests":{"cpu":"50m","memory":"64Mi"}},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File"}],"restartPolicy":"Always","schedulerName":"default-scheduler","securityContext":{},"serviceAccount":"sample-blog","serviceAccountName":"sample-blog","terminationGracePeriodSeconds":30}}},"status":{"availableReplicas":1,"fullyLabeledReplicas":1,"observedGeneration":1,"readyReplicas":1,"replicas":1}}
+    creationTimestamp: "2024-12-10T00:46:23Z"
+    generation: 1
+    labels:
+      app: django
+      pod-template-hash: 5c4c6b8b
+    name: django-5c4c6b8b
+    namespace: sample-blog
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: django
+      uid: e1fe7765-520d-40f9-823c-d76aa5c68bba
+    resourceVersion: "3821596"
+    uid: 2648b2fd-84d1-4ebb-ab1a-ccae0e8d73d6
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: django
+        pod-template-hash: 5c4c6b8b
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: django
+          pod-template-hash: 5c4c6b8b
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: django-mysql-conf
+          - configMapRef:
+              name: redis-conf
+          - secretRef:
+              name: django-mysql-pass
+          image: image-registry.openshift-image-registry.svc:5000/sample-blog/django:latest
+          imagePullPolicy: Always
+          name: django
+          ports:
+          - containerPort: 8000
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 300m
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        initContainers:
+        - args:
+          - |
+            until mysqladmin ping -h $(MYSQL_HOST) -u $(MYSQL_USER) --password=$(MYSQL_PASSWORD) --silent; do
+                echo 'waiting for mysqld to be connectable...'
+                sleep 3
+            done
+          command:
+          - sh
+          - -c
+          envFrom:
+          - configMapRef:
+              name: django-mysql-conf
+          - secretRef:
+              name: mysql-pass
+          image: registry.redhat.io/rhel8/mysql-80
+          imagePullPolicy: IfNotPresent
+          name: init-connection
+          resources:
+            limits:
+              cpu: 100m
+              memory: 128Mi
+            requests:
+              cpu: 50m
+              memory: 64Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        serviceAccount: sample-blog
+        serviceAccountName: sample-blog
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    fullyLabeledReplicas: 1
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      app.openshift.io/connects-to: django
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "1"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"ReplicaSet","metadata":{"annotations":{"app.openshift.io/connects-to":"django","deployment.kubernetes.io/desired-replicas":"1","deployment.kubernetes.io/max-replicas":"2","deployment.kubernetes.io/revision":"1"},"creationTimestamp":"2024-12-10T00:46:23Z","generation":1,"labels":{"app":"nginx","pod-template-hash":"8675f47f6b"},"name":"nginx-8675f47f6b","namespace":"sample-blog","ownerReferences":[{"apiVersion":"apps/v1","blockOwnerDeletion":true,"controller":true,"kind":"Deployment","name":"nginx","uid":"37edbc53-2338-484d-be02-31a2dc61b932"}],"resourceVersion":"3813909","uid":"124f5e4d-82dd-4e78-8795-bdff48b11f58"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"nginx","pod-template-hash":"8675f47f6b"}},"template":{"metadata":{"creationTimestamp":null,"labels":{"app":"nginx","pod-template-hash":"8675f47f6b"}},"spec":{"containers":[{"image":"image-registry.openshift-image-registry.svc:5000/sample-blog/nginx:latest","imagePullPolicy":"Always","name":"nginx","ports":[{"containerPort":8080,"protocol":"TCP"}],"resources":{"limits":{"cpu":"100m","memory":"128Mi"},"requests":{"cpu":"50m","memory":"64Mi"}},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File"}],"dnsPolicy":"ClusterFirst","restartPolicy":"Always","schedulerName":"default-scheduler","securityContext":{},"serviceAccount":"sample-blog","serviceAccountName":"sample-blog","terminationGracePeriodSeconds":30}}},"status":{"availableReplicas":1,"fullyLabeledReplicas":1,"observedGeneration":1,"readyReplicas":1,"replicas":1}}
+    creationTimestamp: "2024-12-10T00:46:23Z"
+    generation: 1
+    labels:
+      app: nginx
+      pod-template-hash: 8675f47f6b
+    name: nginx-8675f47f6b
+    namespace: sample-blog
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: nginx
+      uid: 37edbc53-2338-484d-be02-31a2dc61b932
+    resourceVersion: "3821597"
+    uid: 124f5e4d-82dd-4e78-8795-bdff48b11f58
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: nginx
+        pod-template-hash: 8675f47f6b
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: nginx
+          pod-template-hash: 8675f47f6b
+      spec:
+        containers:
+        - image: image-registry.openshift-image-registry.svc:5000/sample-blog/nginx:latest
+          imagePullPolicy: Always
+          name: nginx
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 100m
+              memory: 128Mi
+            requests:
+              cpu: 50m
+              memory: 64Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        serviceAccount: sample-blog
+        serviceAccountName: sample-blog
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    fullyLabeledReplicas: 1
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+- apiVersion: apps/v1
+  kind: StatefulSet
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"StatefulSet","metadata":{"annotations":{},"creationTimestamp":"2024-12-10T00:46:23Z","generation":1,"labels":{"app":"sample-blog","app.kubernetes.io/part-of":"sample-blog"},"name":"mysql","namespace":"sample-blog","resourceVersion":"2566177","uid":"7b031322-4148-45b5-84ad-f2694127f418"},"spec":{"persistentVolumeClaimRetentionPolicy":{"whenDeleted":"Retain","whenScaled":"Retain"},"podManagementPolicy":"OrderedReady","replicas":1,"revisionHistoryLimit":10,"selector":{"matchLabels":{"app":"mysql"}},"serviceName":"mysql","template":{"metadata":{"creationTimestamp":null,"labels":{"app":"mysql"}},"spec":{"containers":[{"envFrom":[{"configMapRef":{"name":"mysql-conf"}},{"secretRef":{"name":"mysql-pass"}}],"image":"registry.redhat.io/rhel8/mysql-80","imagePullPolicy":"IfNotPresent","name":"mysql","ports":[{"containerPort":3306,"protocol":"TCP"}],"resources":{"limits":{"cpu":"300m","memory":"1Gi"},"requests":{"cpu":"100m","memory":"256Mi"}},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File"}],"dnsPolicy":"ClusterFirst","restartPolicy":"Always","schedulerName":"default-scheduler","securityContext":{},"serviceAccount":"sample-blog","serviceAccountName":"sample-blog","terminationGracePeriodSeconds":30}},"updateStrategy":{"rollingUpdate":{"partition":0},"type":"RollingUpdate"}},"status":{"availableReplicas":1,"collisionCount":0,"currentReplicas":1,"currentRevision":"mysql-88c674c4b","observedGeneration":1,"readyReplicas":1,"replicas":1,"updateRevision":"mysql-88c674c4b","updatedReplicas":1}}
+    creationTimestamp: "2024-12-10T00:46:23Z"
+    generation: 1
+    labels:
+      app: sample-blog
+      app.kubernetes.io/part-of: sample-blog
+    name: mysql
+    namespace: sample-blog
+    resourceVersion: "3821600"
+    uid: 7b031322-4148-45b5-84ad-f2694127f418
+  spec:
+    persistentVolumeClaimRetentionPolicy:
+      whenDeleted: Retain
+      whenScaled: Retain
+    podManagementPolicy: OrderedReady
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: mysql
+    serviceName: mysql
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: mysql
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: mysql-conf
+          - secretRef:
+              name: mysql-pass
+          image: registry.redhat.io/rhel8/mysql-80
+          imagePullPolicy: IfNotPresent
+          name: mysql
+          ports:
+          - containerPort: 3306
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 300m
+              memory: 1Gi
+            requests:
+              cpu: 100m
+              memory: 256Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        serviceAccount: sample-blog
+        serviceAccountName: sample-blog
+        terminationGracePeriodSeconds: 30
+    updateStrategy:
+      rollingUpdate:
+        partition: 0
+      type: RollingUpdate
+  status:
+    availableReplicas: 1
+    collisionCount: 0
+    currentReplicas: 1
+    currentRevision: mysql-88c674c4b
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+    updateRevision: mysql-88c674c4b
+    updatedReplicas: 1
+- apiVersion: apps/v1
+  kind: StatefulSet
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"StatefulSet","metadata":{"annotations":{},"creationTimestamp":"2024-12-10T00:46:23Z","generation":1,"labels":{"app":"sample-blog","app.kubernetes.io/part-of":"sample-blog"},"name":"redis","namespace":"sample-blog","resourceVersion":"2578295","uid":"64284d09-cdd7-41cf-967b-3b91e6bc5238"},"spec":{"persistentVolumeClaimRetentionPolicy":{"whenDeleted":"Retain","whenScaled":"Retain"},"podManagementPolicy":"OrderedReady","replicas":1,"revisionHistoryLimit":10,"selector":{"matchLabels":{"app":"redis"}},"serviceName":"redis","template":{"metadata":{"creationTimestamp":null,"labels":{"app":"redis"}},"spec":{"containers":[{"image":"registry.redhat.io/rhel8/redis-6","imagePullPolicy":"IfNotPresent","name":"redis","ports":[{"containerPort":6379,"protocol":"TCP"}],"resources":{"limits":{"cpu":"200m","memory":"256Mi"},"requests":{"cpu":"100m","memory":"128Mi"}},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File","volumeMounts":[{"mountPath":"/data","name":"data"}]}],"dnsPolicy":"ClusterFirst","restartPolicy":"Always","schedulerName":"default-scheduler","securityContext":{},"serviceAccount":"sample-blog","serviceAccountName":"sample-blog","terminationGracePeriodSeconds":30,"volumes":[{"emptyDir":{},"name":"data"}]}},"updateStrategy":{"rollingUpdate":{"partition":0},"type":"RollingUpdate"}},"status":{"availableReplicas":1,"collisionCount":0,"currentReplicas":1,"currentRevision":"redis-598b876897","observedGeneration":1,"readyReplicas":1,"replicas":1,"updateRevision":"redis-598b876897","updatedReplicas":1}}
+    creationTimestamp: "2024-12-10T00:46:23Z"
+    generation: 1
+    labels:
+      app: sample-blog
+      app.kubernetes.io/part-of: sample-blog
+    name: redis
+    namespace: sample-blog
+    resourceVersion: "3821601"
+    uid: 64284d09-cdd7-41cf-967b-3b91e6bc5238
+  spec:
+    persistentVolumeClaimRetentionPolicy:
+      whenDeleted: Retain
+      whenScaled: Retain
+    podManagementPolicy: OrderedReady
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: redis
+    serviceName: redis
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: redis
+      spec:
+        containers:
+        - image: registry.redhat.io/rhel8/redis-6
+          imagePullPolicy: IfNotPresent
+          name: redis
+          ports:
+          - containerPort: 6379
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 200m
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /data
+            name: data
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        serviceAccount: sample-blog
+        serviceAccountName: sample-blog
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - emptyDir: {}
+          name: data
+    updateStrategy:
+      rollingUpdate:
+        partition: 0
+      type: RollingUpdate
+  status:
+    availableReplicas: 1
+    collisionCount: 0
+    currentReplicas: 1
+    currentRevision: redis-598b876897
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+    updateRevision: redis-598b876897
+    updatedReplicas: 1
+- apiVersion: build.openshift.io/v1
+  kind: BuildConfig
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"build.openshift.io/v1","kind":"BuildConfig","metadata":{"annotations":{"openshift.io/generated-by":"OpenShiftNewBuild"},"creationTimestamp":"2024-12-10T00:28:49Z","generation":2,"labels":{"build":"django"},"name":"django","namespace":"sample-blog","resourceVersion":"3680469","uid":"b2a8482b-8733-4e7c-bc33-874a0fd6f109"},"spec":{"failedBuildsHistoryLimit":5,"nodeSelector":null,"output":{"to":{"kind":"ImageStreamTag","name":"django:latest"}},"postCommit":{},"resources":{},"runPolicy":"Serial","source":{"binary":{},"type":"Binary"},"strategy":{"dockerStrategy":{},"type":"Docker"},"successfulBuildsHistoryLimit":5,"triggers":[{"github":{"secret":"pqy7jX7rS-FzrktT1MCD"},"type":"GitHub"},{"generic":{"secret":"1ddug-OMdnyIQPQsEpC9"},"type":"Generic"}]},"status":{"lastVersion":1}}
+      openshift.io/generated-by: OpenShiftNewBuild
+    creationTimestamp: "2024-12-10T00:28:49Z"
+    generation: 2
+    labels:
+      build: django
+    name: django
+    namespace: sample-blog
+    resourceVersion: "3821602"
+    uid: b2a8482b-8733-4e7c-bc33-874a0fd6f109
+  spec:
+    failedBuildsHistoryLimit: 5
+    nodeSelector: null
+    output:
+      to:
+        kind: ImageStreamTag
+        name: django:latest
+    postCommit: {}
+    resources: {}
+    runPolicy: Serial
+    source:
+      binary: {}
+      type: Binary
+    strategy:
+      dockerStrategy: {}
+      type: Docker
+    successfulBuildsHistoryLimit: 5
+    triggers:
+    - github:
+        secret: pqy7jX7rS-FzrktT1MCD
+      type: GitHub
+    - generic:
+        secret: 1ddug-OMdnyIQPQsEpC9
+      type: Generic
+  status:
+    lastVersion: 1
+- apiVersion: build.openshift.io/v1
+  kind: BuildConfig
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"build.openshift.io/v1","kind":"BuildConfig","metadata":{"annotations":{"openshift.io/generated-by":"OpenShiftNewBuild"},"creationTimestamp":"2024-12-10T00:27:40Z","generation":2,"labels":{"build":"nginx"},"name":"nginx","namespace":"sample-blog","resourceVersion":"3680472","uid":"597d20ad-bf1e-40b5-8c50-63d48859e30a"},"spec":{"failedBuildsHistoryLimit":5,"nodeSelector":null,"output":{"to":{"kind":"ImageStreamTag","name":"nginx:latest"}},"postCommit":{},"resources":{},"runPolicy":"Serial","source":{"binary":{},"type":"Binary"},"strategy":{"dockerStrategy":{},"type":"Docker"},"successfulBuildsHistoryLimit":5,"triggers":[{"github":{"secret":"U_tVRkIUGRW6M6WN8ixB"},"type":"GitHub"},{"generic":{"secret":"Qzc2XHbIWtfozA8CYB_x"},"type":"Generic"}]},"status":{"lastVersion":1}}
+      openshift.io/generated-by: OpenShiftNewBuild
+    creationTimestamp: "2024-12-10T00:27:40Z"
+    generation: 2
+    labels:
+      build: nginx
+    name: nginx
+    namespace: sample-blog
+    resourceVersion: "3821604"
+    uid: 597d20ad-bf1e-40b5-8c50-63d48859e30a
+  spec:
+    failedBuildsHistoryLimit: 5
+    nodeSelector: null
+    output:
+      to:
+        kind: ImageStreamTag
+        name: nginx:latest
+    postCommit: {}
+    resources: {}
+    runPolicy: Serial
+    source:
+      binary: {}
+      type: Binary
+    strategy:
+      dockerStrategy: {}
+      type: Docker
+    successfulBuildsHistoryLimit: 5
+    triggers:
+    - github:
+        secret: U_tVRkIUGRW6M6WN8ixB
+      type: GitHub
+    - generic:
+        secret: Qzc2XHbIWtfozA8CYB_x
+      type: Generic
+  status:
+    lastVersion: 1
+- apiVersion: build.openshift.io/v1
+  kind: Build
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"build.openshift.io/v1","kind":"Build","metadata":{"annotations":{"openshift.io/build-config.name":"django","openshift.io/build.number":"1","openshift.io/build.pod-name":"django-1-build"},"creationTimestamp":"2024-12-10T00:29:05Z","generation":2,"labels":{"build":"django","buildconfig":"django","openshift.io/build-config.name":"django","openshift.io/build.start-policy":"Serial"},"name":"django-1","namespace":"sample-blog","ownerReferences":[{"apiVersion":"build.openshift.io/v1","controller":true,"kind":"BuildConfig","name":"django","uid":"b2a8482b-8733-4e7c-bc33-874a0fd6f109"}],"resourceVersion":"3680473","uid":"5386f104-ba8f-4c8f-91ff-4d0386a75b24"},"spec":{"nodeSelector":null,"output":{"pushSecret":{"name":"builder-dockercfg-gq87h"},"to":{"kind":"ImageStreamTag","name":"django:latest"}},"postCommit":{},"resources":{},"revision":{"git":{"author":{"email":"46037102+skitamura7446@users.noreply.github.com","name":"skitamura7446"},"commit":"8bd1e9b48692315f2b3320b7ad730fbc6aaceb66","committer":{"email":"noreply@github.com","name":"GitHub"},"message":"Update README.md"},"type":"Git"},"serviceAccount":"builder","source":{"binary":{},"type":"Binary"},"strategy":{"dockerStrategy":{},"type":"Docker"}},"status":{"completionTimestamp":"2024-12-10T00:29:52Z","conditions":[{"lastTransitionTime":"2024-12-10T00:29:05Z","lastUpdateTime":"2024-12-10T00:29:05Z","status":"False","type":"New"},{"lastTransitionTime":"2024-12-10T00:29:06Z","lastUpdateTime":"2024-12-10T00:29:06Z","status":"False","type":"Pending"},{"lastTransitionTime":"2024-12-10T00:29:52Z","lastUpdateTime":"2024-12-10T00:29:52Z","status":"False","type":"Running"},{"lastTransitionTime":"2024-12-10T00:29:52Z","lastUpdateTime":"2024-12-10T00:29:52Z","status":"True","type":"Complete"}],"config":{"kind":"BuildConfig","name":"django","namespace":"sample-blog"},"duration":47000000000,"output":{"to":{"imageDigest":"sha256:601d3ab9eaa7f19c4c3eec94cda8dafb08829bab97a732342c823d6446bbb173"}},"outputDockerImageReference":"image-registry.openshift-image-registry.svc:5000/sample-blog/django:latest","phase":"Complete","stages":[{"durationMilliseconds":19692,"name":"PullImages","startTime":"2024-12-10T00:29:08Z","steps":[{"durationMilliseconds":19692,"name":"PullBaseImage","startTime":"2024-12-10T00:29:08Z"}]},{"durationMilliseconds":14877,"name":"Build","startTime":"2024-12-10T00:29:28Z","steps":[{"durationMilliseconds":14877,"name":"DockerBuild","startTime":"2024-12-10T00:29:28Z"}]},{"durationMilliseconds":7486,"name":"PushImage","startTime":"2024-12-10T00:29:43Z","steps":[{"durationMilliseconds":7486,"name":"PushDockerImage","startTime":"2024-12-10T00:29:43Z"}]}],"startTimestamp":"2024-12-10T00:29:05Z"}}
+      openshift.io/build-config.name: django
+      openshift.io/build.number: "1"
+      openshift.io/build.pod-name: django-1-build
+    creationTimestamp: "2024-12-10T00:29:05Z"
+    generation: 2
+    labels:
+      build: django
+      buildconfig: django
+      openshift.io/build-config.name: django
+      openshift.io/build.start-policy: Serial
+    name: django-1
+    namespace: sample-blog
+    ownerReferences:
+    - apiVersion: build.openshift.io/v1
+      controller: true
+      kind: BuildConfig
+      name: django
+      uid: b2a8482b-8733-4e7c-bc33-874a0fd6f109
+    resourceVersion: "3821606"
+    uid: 5386f104-ba8f-4c8f-91ff-4d0386a75b24
+  spec:
+    nodeSelector: null
+    output:
+      pushSecret:
+        name: builder-dockercfg-gq87h
+      to:
+        kind: ImageStreamTag
+        name: django:latest
+    postCommit: {}
+    resources: {}
+    revision:
+      git:
+        author:
+          email: 46037102+skitamura7446@users.noreply.github.com
+          name: skitamura7446
+        commit: 8bd1e9b48692315f2b3320b7ad730fbc6aaceb66
+        committer:
+          email: noreply@github.com
+          name: GitHub
+        message: Update README.md
+      type: Git
+    serviceAccount: builder
+    source:
+      binary: {}
+      type: Binary
+    strategy:
+      dockerStrategy: {}
+      type: Docker
+  status:
+    completionTimestamp: "2024-12-10T00:29:52Z"
+    conditions:
+    - lastTransitionTime: "2024-12-10T00:29:05Z"
+      lastUpdateTime: "2024-12-10T00:29:05Z"
+      status: "False"
+      type: New
+    - lastTransitionTime: "2024-12-10T00:29:06Z"
+      lastUpdateTime: "2024-12-10T00:29:06Z"
+      status: "False"
+      type: Pending
+    - lastTransitionTime: "2024-12-10T00:29:52Z"
+      lastUpdateTime: "2024-12-10T00:29:52Z"
+      status: "False"
+      type: Running
+    - lastTransitionTime: "2024-12-10T00:29:52Z"
+      lastUpdateTime: "2024-12-10T00:29:52Z"
+      status: "True"
+      type: Complete
+    config:
+      kind: BuildConfig
+      name: django
+      namespace: sample-blog
+    duration: 47000000000
+    output:
+      to:
+        imageDigest: sha256:601d3ab9eaa7f19c4c3eec94cda8dafb08829bab97a732342c823d6446bbb173
+    outputDockerImageReference: image-registry.openshift-image-registry.svc:5000/sample-blog/django:latest
+    phase: Complete
+    stages:
+    - durationMilliseconds: 19692
+      name: PullImages
+      startTime: "2024-12-10T00:29:08Z"
+      steps:
+      - durationMilliseconds: 19692
+        name: PullBaseImage
+        startTime: "2024-12-10T00:29:08Z"
+    - durationMilliseconds: 14877
+      name: Build
+      startTime: "2024-12-10T00:29:28Z"
+      steps:
+      - durationMilliseconds: 14877
+        name: DockerBuild
+        startTime: "2024-12-10T00:29:28Z"
+    - durationMilliseconds: 7486
+      name: PushImage
+      startTime: "2024-12-10T00:29:43Z"
+      steps:
+      - durationMilliseconds: 7486
+        name: PushDockerImage
+        startTime: "2024-12-10T00:29:43Z"
+    startTimestamp: "2024-12-10T00:29:05Z"
+- apiVersion: build.openshift.io/v1
+  kind: Build
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"build.openshift.io/v1","kind":"Build","metadata":{"annotations":{"openshift.io/build-config.name":"nginx","openshift.io/build.number":"1","openshift.io/build.pod-name":"nginx-1-build"},"creationTimestamp":"2024-12-10T00:28:09Z","generation":2,"labels":{"build":"nginx","buildconfig":"nginx","openshift.io/build-config.name":"nginx","openshift.io/build.start-policy":"Serial"},"name":"nginx-1","namespace":"sample-blog","ownerReferences":[{"apiVersion":"build.openshift.io/v1","controller":true,"kind":"BuildConfig","name":"nginx","uid":"597d20ad-bf1e-40b5-8c50-63d48859e30a"}],"resourceVersion":"3680474","uid":"dac5c968-1a2c-44ed-a468-4226595c604a"},"spec":{"nodeSelector":null,"output":{"pushSecret":{"name":"builder-dockercfg-gq87h"},"to":{"kind":"ImageStreamTag","name":"nginx:latest"}},"postCommit":{},"resources":{},"revision":{"git":{"author":{"email":"46037102+skitamura7446@users.noreply.github.com","name":"skitamura7446"},"commit":"8bd1e9b48692315f2b3320b7ad730fbc6aaceb66","committer":{"email":"noreply@github.com","name":"GitHub"},"message":"Update README.md"},"type":"Git"},"serviceAccount":"builder","source":{"binary":{},"type":"Binary"},"strategy":{"dockerStrategy":{},"type":"Docker"}},"status":{"completionTimestamp":"2024-12-10T00:28:52Z","conditions":[{"lastTransitionTime":"2024-12-10T00:28:10Z","lastUpdateTime":"2024-12-10T00:28:10Z","status":"False","type":"New"},{"lastTransitionTime":"2024-12-10T00:28:25Z","lastUpdateTime":"2024-12-10T00:28:25Z","status":"False","type":"Pending"},{"lastTransitionTime":"2024-12-10T00:28:52Z","lastUpdateTime":"2024-12-10T00:28:52Z","status":"False","type":"Running"},{"lastTransitionTime":"2024-12-10T00:28:52Z","lastUpdateTime":"2024-12-10T00:28:52Z","status":"True","type":"Complete"}],"config":{"kind":"BuildConfig","name":"nginx","namespace":"sample-blog"},"duration":42000000000,"output":{"to":{"imageDigest":"sha256:591b4942afce4d3d699c8891c1fbcb4560dd2684d6406a2832829b11162165f0"}},"outputDockerImageReference":"image-registry.openshift-image-registry.svc:5000/sample-blog/nginx:latest","phase":"Complete","stages":[{"durationMilliseconds":12548,"name":"PullImages","startTime":"2024-12-10T00:28:28Z","steps":[{"durationMilliseconds":12548,"name":"PullBaseImage","startTime":"2024-12-10T00:28:28Z"}]},{"durationMilliseconds":3606,"name":"Build","startTime":"2024-12-10T00:28:40Z","steps":[{"durationMilliseconds":3606,"name":"DockerBuild","startTime":"2024-12-10T00:28:40Z"}]},{"durationMilliseconds":6108,"name":"PushImage","startTime":"2024-12-10T00:28:44Z","steps":[{"durationMilliseconds":6108,"name":"PushDockerImage","startTime":"2024-12-10T00:28:44Z"}]}],"startTimestamp":"2024-12-10T00:28:10Z"}}
+      openshift.io/build-config.name: nginx
+      openshift.io/build.number: "1"
+      openshift.io/build.pod-name: nginx-1-build
+    creationTimestamp: "2024-12-10T00:28:09Z"
+    generation: 2
+    labels:
+      build: nginx
+      buildconfig: nginx
+      openshift.io/build-config.name: nginx
+      openshift.io/build.start-policy: Serial
+    name: nginx-1
+    namespace: sample-blog
+    ownerReferences:
+    - apiVersion: build.openshift.io/v1
+      controller: true
+      kind: BuildConfig
+      name: nginx
+      uid: 597d20ad-bf1e-40b5-8c50-63d48859e30a
+    resourceVersion: "3821607"
+    uid: dac5c968-1a2c-44ed-a468-4226595c604a
+  spec:
+    nodeSelector: null
+    output:
+      pushSecret:
+        name: builder-dockercfg-gq87h
+      to:
+        kind: ImageStreamTag
+        name: nginx:latest
+    postCommit: {}
+    resources: {}
+    revision:
+      git:
+        author:
+          email: 46037102+skitamura7446@users.noreply.github.com
+          name: skitamura7446
+        commit: 8bd1e9b48692315f2b3320b7ad730fbc6aaceb66
+        committer:
+          email: noreply@github.com
+          name: GitHub
+        message: Update README.md
+      type: Git
+    serviceAccount: builder
+    source:
+      binary: {}
+      type: Binary
+    strategy:
+      dockerStrategy: {}
+      type: Docker
+  status:
+    completionTimestamp: "2024-12-10T00:28:52Z"
+    conditions:
+    - lastTransitionTime: "2024-12-10T00:28:10Z"
+      lastUpdateTime: "2024-12-10T00:28:10Z"
+      status: "False"
+      type: New
+    - lastTransitionTime: "2024-12-10T00:28:25Z"
+      lastUpdateTime: "2024-12-10T00:28:25Z"
+      status: "False"
+      type: Pending
+    - lastTransitionTime: "2024-12-10T00:28:52Z"
+      lastUpdateTime: "2024-12-10T00:28:52Z"
+      status: "False"
+      type: Running
+    - lastTransitionTime: "2024-12-10T00:28:52Z"
+      lastUpdateTime: "2024-12-10T00:28:52Z"
+      status: "True"
+      type: Complete
+    config:
+      kind: BuildConfig
+      name: nginx
+      namespace: sample-blog
+    duration: 42000000000
+    output:
+      to:
+        imageDigest: sha256:591b4942afce4d3d699c8891c1fbcb4560dd2684d6406a2832829b11162165f0
+    outputDockerImageReference: image-registry.openshift-image-registry.svc:5000/sample-blog/nginx:latest
+    phase: Complete
+    stages:
+    - durationMilliseconds: 12548
+      name: PullImages
+      startTime: "2024-12-10T00:28:28Z"
+      steps:
+      - durationMilliseconds: 12548
+        name: PullBaseImage
+        startTime: "2024-12-10T00:28:28Z"
+    - durationMilliseconds: 3606
+      name: Build
+      startTime: "2024-12-10T00:28:40Z"
+      steps:
+      - durationMilliseconds: 3606
+        name: DockerBuild
+        startTime: "2024-12-10T00:28:40Z"
+    - durationMilliseconds: 6108
+      name: PushImage
+      startTime: "2024-12-10T00:28:44Z"
+      steps:
+      - durationMilliseconds: 6108
+        name: PushDockerImage
+        startTime: "2024-12-10T00:28:44Z"
+    startTimestamp: "2024-12-10T00:28:10Z"
+- apiVersion: image.openshift.io/v1
+  kind: ImageStream
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"image.openshift.io/v1","kind":"ImageStream","metadata":{"annotations":{"openshift.io/generated-by":"OpenShiftNewBuild"},"creationTimestamp":"2024-12-10T00:28:49Z","generation":1,"labels":{"build":"django"},"name":"django","namespace":"sample-blog","resourceVersion":"3680476","uid":"5a0db1d3-b612-4750-ac81-1de90d0dd82f"},"spec":{"lookupPolicy":{"local":false}},"status":{"dockerImageRepository":"image-registry.openshift-image-registry.svc:5000/sample-blog/django","publicDockerImageRepository":"default-route-openshift-image-registry.apps.dcm-ocp-pocpack.sep0.p1.openshiftapps.com/sample-blog/django","tags":[{"items":[{"created":"2024-12-10T00:29:50Z","dockerImageReference":"image-registry.openshift-image-registry.svc:5000/sample-blog/django@sha256:601d3ab9eaa7f19c4c3eec94cda8dafb08829bab97a732342c823d6446bbb173","generation":1,"image":"sha256:601d3ab9eaa7f19c4c3eec94cda8dafb08829bab97a732342c823d6446bbb173"}],"tag":"latest"}]}}
+      openshift.io/generated-by: OpenShiftNewBuild
+    creationTimestamp: "2024-12-10T00:28:49Z"
+    generation: 1
+    labels:
+      build: django
+    name: django
+    namespace: sample-blog
+    resourceVersion: "3821608"
+    uid: 5a0db1d3-b612-4750-ac81-1de90d0dd82f
+  spec:
+    lookupPolicy:
+      local: false
+  status:
+    dockerImageRepository: image-registry.openshift-image-registry.svc:5000/sample-blog/django
+    publicDockerImageRepository: default-route-openshift-image-registry.apps.dcm-ocp-pocpack.sep0.p1.openshiftapps.com/sample-blog/django
+    tags:
+    - items:
+      - created: "2024-12-10T00:29:50Z"
+        dockerImageReference: image-registry.openshift-image-registry.svc:5000/sample-blog/django@sha256:601d3ab9eaa7f19c4c3eec94cda8dafb08829bab97a732342c823d6446bbb173
+        generation: 1
+        image: sha256:601d3ab9eaa7f19c4c3eec94cda8dafb08829bab97a732342c823d6446bbb173
+      tag: latest
+- apiVersion: image.openshift.io/v1
+  kind: ImageStream
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"image.openshift.io/v1","kind":"ImageStream","metadata":{"annotations":{"openshift.io/generated-by":"OpenShiftNewBuild"},"creationTimestamp":"2024-12-10T00:27:40Z","generation":1,"labels":{"build":"nginx"},"name":"nginx","namespace":"sample-blog","resourceVersion":"3680477","uid":"7de573d9-5ccd-4b78-9611-38538a359969"},"spec":{"lookupPolicy":{"local":false}},"status":{"dockerImageRepository":"image-registry.openshift-image-registry.svc:5000/sample-blog/nginx","publicDockerImageRepository":"default-route-openshift-image-registry.apps.dcm-ocp-pocpack.sep0.p1.openshiftapps.com/sample-blog/nginx","tags":[{"items":[{"created":"2024-12-10T00:28:50Z","dockerImageReference":"image-registry.openshift-image-registry.svc:5000/sample-blog/nginx@sha256:591b4942afce4d3d699c8891c1fbcb4560dd2684d6406a2832829b11162165f0","generation":1,"image":"sha256:591b4942afce4d3d699c8891c1fbcb4560dd2684d6406a2832829b11162165f0"}],"tag":"latest"}]}}
+      openshift.io/generated-by: OpenShiftNewBuild
+    creationTimestamp: "2024-12-10T00:27:40Z"
+    generation: 1
+    labels:
+      build: nginx
+    name: nginx
+    namespace: sample-blog
+    resourceVersion: "3821609"
+    uid: 7de573d9-5ccd-4b78-9611-38538a359969
+  spec:
+    lookupPolicy:
+      local: false
+  status:
+    dockerImageRepository: image-registry.openshift-image-registry.svc:5000/sample-blog/nginx
+    publicDockerImageRepository: default-route-openshift-image-registry.apps.dcm-ocp-pocpack.sep0.p1.openshiftapps.com/sample-blog/nginx
+    tags:
+    - items:
+      - created: "2024-12-10T00:28:50Z"
+        dockerImageReference: image-registry.openshift-image-registry.svc:5000/sample-blog/nginx@sha256:591b4942afce4d3d699c8891c1fbcb4560dd2684d6406a2832829b11162165f0
+        generation: 1
+        image: sha256:591b4942afce4d3d699c8891c1fbcb4560dd2684d6406a2832829b11162165f0
+      tag: latest
+- apiVersion: route.openshift.io/v1
+  kind: Route
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"route.openshift.io/v1","kind":"Route","metadata":{"annotations":{"openshift.io/host.generated":"true"},"creationTimestamp":"2024-12-10T03:03:16Z","labels":{"app":"sample-blog"},"name":"nginx","namespace":"sample-blog","resourceVersion":"3680478","uid":"0e925766-c873-48db-bd44-0382a607098c"},"spec":{"host":"nginx-sample-blog.apps.dcm-ocp-pocpack.sep0.p1.openshiftapps.com","port":{"targetPort":8080},"to":{"kind":"Service","name":"nginx","weight":100},"wildcardPolicy":"None"},"status":{"ingress":[{"conditions":[{"lastTransitionTime":"2024-12-10T03:03:16Z","status":"True","type":"Admitted"}],"host":"nginx-sample-blog.apps.dcm-ocp-pocpack.sep0.p1.openshiftapps.com","routerCanonicalHostname":"router-default.apps.dcm-ocp-pocpack.sep0.p1.openshiftapps.com","routerName":"default","wildcardPolicy":"None"}]}}
+      openshift.io/host.generated: "true"
+    creationTimestamp: "2024-12-10T03:03:16Z"
+    labels:
+      app: sample-blog
+    name: nginx
+    namespace: sample-blog
+    resourceVersion: "3821612"
+    uid: 0e925766-c873-48db-bd44-0382a607098c
+  spec:
+    host: nginx-sample-blog.apps.dcm-ocp-pocpack.sep0.p1.openshiftapps.com
+    port:
+      targetPort: 8080
+    to:
+      kind: Service
+      name: nginx
+      weight: 100
+    wildcardPolicy: None
+  status:
+    ingress:
+    - conditions:
+      - lastTransitionTime: "2024-12-10T03:03:16Z"
+        status: "True"
+        type: Admitted
+      host: nginx-sample-blog.apps.dcm-ocp-pocpack.sep0.p1.openshiftapps.com
+      routerCanonicalHostname: router-default.apps.dcm-ocp-pocpack.sep0.p1.openshiftapps.com
+      routerName: default
+      wildcardPolicy: None
+kind: List
+metadata:
+  resourceVersion: ""
+[ec2-user@ip-172-31-43-114 sample-blog]$ 
